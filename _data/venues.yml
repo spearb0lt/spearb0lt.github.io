@@ -1,9 +1,11 @@
-"AJP":
-  url: https://aapt.scitation.org/journal/ajp
-  color: "#00369f"
+"ISACC":
+  url: https://ieeexplore.ieee.org/
+  color: "#00629b"
 
-"PhysRev":
-  url: https://journals.aps.org/
+"IEEE T-ITS":
+  url: https://ieee-itss.org/pub/t-its/
+  color: "#00629b"
 
-"Vision":
-  color: "#009f36"
+"AACL":
+  url: https://aclanthology.org/
+  color: "#ed1c24"

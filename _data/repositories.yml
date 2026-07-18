@@ -1,14 +1,12 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - spearb0lt
 
 repo_description_lines_max: 2
 
 github_repos:
-  - alshedivat/al-folio
-  - jekyll/jekyll
-  - twbs/bootstrap
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - mathjax/MathJax
-  - jpswalsh/academicons
+  - spearb0lt/Scania
+  - spearb0lt/SENTRAL-Multi-Spectrum-Stock-Analysis
+  - spearb0lt/LitigatAI
+  - spearb0lt/Legal-RAG
+  - spearb0lt/Text-to-Handwriting-converter
+  - spearb0lt/portfolio1
