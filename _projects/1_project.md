@@ -4,9 +4,11 @@ title: Privacy-Preserving Predictive Maintenance
 description: A federated, differentially private framework for RUL prediction on the IDA 2024 SCANIA-X challenge.
 img: assets/img/3.jpg
 importance: 1
-category: work
+category: research
 related_publications: true
 ---
+
+**Links:** [GitHub](https://github.com/spearb0lt/Scania)
 
 Built as part of my research at the VANET Lab, IIT Jodhpur, this project tackles the IDA 2024 Industrial Challenge: predicting the Remaining Useful Life (RUL) of components in the SCANIA-X dataset while keeping the training data private. The work is described in our paper {% cite dev2025dphybrid %}.
 

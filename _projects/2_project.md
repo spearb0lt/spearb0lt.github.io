@@ -3,9 +3,11 @@ layout: page
 title: SENTRAL - Multi Spectrum Stock Analysis
 description: A multi-spectrum stock analysis engine that fuses fundamentals, technicals and custom-LLM sentiment.
 img: assets/img/7.jpg
-importance: 2
-category: work
+importance: 5
+category: applications
 ---
+
+**Links:** [GitHub](https://github.com/spearb0lt/SENTRAL-Multi-Spectrum-Stock-Analysis)
 
 SENTRAL is a multi-spectrum equity analysis system that blends classical financial analysis with modern LLM-driven sentiment to produce buy, hold and sell signals.
 

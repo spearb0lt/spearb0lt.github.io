@@ -3,9 +3,11 @@ layout: page
 title: Context-Aware Multimodal Knowledge Retrieval
 description: A multimodal RAG system that parses, summarises and retrieves images, tables, equations and text with source-cited answers.
 img: assets/img/1.jpg
-importance: 3
-category: work
+importance: 6
+category: research
 ---
+
+**Links:** [GitHub](https://github.com/spearb0lt/Context-Aware-Multimodal-Knowledge-Retrieval-System)
 
 A context-aware retrieval system that understands documents the way a person does, treating images, tables, equations, graphs and text as distinct modalities rather than flattening everything into plain text.
 
