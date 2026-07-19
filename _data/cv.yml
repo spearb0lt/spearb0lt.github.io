@@ -19,7 +19,7 @@ cv:
   sections:
     Education:
       - institution: Rajiv Gandhi Institute of Petroleum Technology (RGIPT)
-        location: Jais, Amethi, Uttar Pradesh, India
+        location: Jais, Uttar Pradesh
         url: https://www.rgipt.ac.in/
         area: Computer Science and Engineering
         studyType: Bachelor of Technology
@@ -221,6 +221,22 @@ cv:
       - name: Cloud and Tools
         icon: fa-solid fa-cloud
         keywords: "AWS Bedrock, S3, Lambda, SageMaker, Streamlit, Power BI, Tableau"
+
+    Languages:
+      - name: English
+        summary: "Fluent"
+
+      - name: Hindi
+        summary: "Fluent"
+
+      - name: Bengali
+        summary: "Native"
+
+      - name: Marathi
+        summary: "Conversational"
+
+      - name: Assamese
+        summary: "Conversational"
 
     Interests:
       - name: Research

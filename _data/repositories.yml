@@ -4,9 +4,15 @@ github_users:
 repo_description_lines_max: 2
 
 github_repos:
-  - spearb0lt/Scania
-  - spearb0lt/SENTRAL-Multi-Spectrum-Stock-Analysis
+  - spearb0lt/Text-to-Handwriting-converter
+  - spearb0lt/Consumer-Commission-Complaint-Agent
   - spearb0lt/LitigatAI
   - spearb0lt/Legal-RAG
-  - spearb0lt/Text-to-Handwriting-converter
-  - spearb0lt/portfolio1
+  - spearb0lt/my-codegen-api2
+  - spearb0lt/CodeGen-Hacker-Cup-AI-devkit
+  - spearb0lt/SENTRAL-Multi-Spectrum-Stock-Analysis
+  - spearb0lt/Context-Aware-Multimodal-Knowledge-Retrieval-System
+  - spearb0lt/Scania
+  - spearb0lt/Gesture-Video-Cotroller
+  - spearb0lt/Lung-Cancer-Detection-Using-DL
+  - spearb0lt/Face-Liveliness-Detection-Using-DL

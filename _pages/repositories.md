@@ -39,6 +39,8 @@ nav_order: 4
 
 ## GitHub Repositories
 
+Special mention: [my-codegen-api2](https://github.com/spearb0lt/my-codegen-api2) is powered by my [CodeGen-Hacker-Cup-AI-devkit](https://github.com/spearb0lt/CodeGen-Hacker-Cup-AI-devkit), the toolkit behind my Global Rank 10 finish in the Meta Hacker Cup 2025 (AI Track).
+
 <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
   {% for repo in site.data.repositories.github_repos %}
     {% include repository/repo.liquid repository=repo %}

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Global Rank 10 at Meta Hacker Cup 2025 (AI Track)
-date: 2025-10-15 12:00:00+0530
+date: 2025-11-29 12:00:00+0530
 inline: false
 related_posts: false
 ---
