@@ -1,0 +1,139 @@
+# Add movies here, one per line:  Title | Genre
+# Then run:  python bin/add_movies.py
+# Lines starting with # are ignored. A (Year) after the title disambiguates remakes.
+
+# ---- Drama ----
+The Shawshank Redemption (1994) | Drama
+Schindler's List (1993) | Drama
+Forrest Gump (1994) | Drama
+12 Angry Men (1957) | Drama
+Whiplash (2014) | Drama
+Ikiru (1952) | Drama
+Yi Yi (2000) | Drama
+Nomadland (2020) | Drama
+The Virgin Suicides (1999) | Drama
+Moonlight (2016) | Drama
+There Will Be Blood (2007) | Drama
+Manchester by the Sea (2016) | Drama
+A Separation (2011) | Drama
+Dead Poets Society (1989) | Drama
+Good Will Hunting (1997) | Drama
+Do the Right Thing (1989) | Drama
+
+# ---- Crime ----
+The Godfather (1972) | Crime
+The Godfather Part II (1974) | Crime
+GoodFellas (1990) | Crime
+Pulp Fiction (1994) | Crime
+The Departed (2006) | Crime
+City of God (2002) | Crime
+Scarface (1983) | Crime
+Heat (1995) | Crime
+No Country for Old Men (2007) | Crime
+Once Upon a Time in America (1984) | Crime
+Reservoir Dogs (1992) | Crime
+Peaky Blinders (2013) | Crime
+
+# ---- Thriller & Mystery ----
+Inception (2010) | Thriller & Mystery
+Se7en (1995) | Thriller & Mystery
+The Silence of the Lambs (1991) | Thriller & Mystery
+Parasite (2019) | Thriller & Mystery
+Oldboy (2003) | Thriller & Mystery
+Memento (2000) | Thriller & Mystery
+Zodiac (2007) | Thriller & Mystery
+Gone Girl (2014) | Thriller & Mystery
+Prisoners (2013) | Thriller & Mystery
+The Prestige (2006) | Thriller & Mystery
+Shutter Island (2010) | Thriller & Mystery
+Rear Window (1954) | Thriller & Mystery
+
+# ---- Sci-Fi ----
+2001: A Space Odyssey (1968) | Sci-Fi
+Blade Runner (1982) | Sci-Fi
+Blade Runner 2049 (2017) | Sci-Fi
+The Matrix (1999) | Sci-Fi
+Interstellar (2014) | Sci-Fi
+Back to the Future (1985) | Sci-Fi
+Alien (1979) | Sci-Fi
+Arrival (2016) | Sci-Fi
+Dune (2021) | Sci-Fi
+Ex Machina (2014) | Sci-Fi
+Terminator 2: Judgment Day (1991) | Sci-Fi
+Metropolis (1927) | Sci-Fi
+
+# ---- Action & Adventure ----
+Mad Max: Fury Road (2015) | Action & Adventure
+Gladiator (2000) | Action & Adventure
+Die Hard (1988) | Action & Adventure
+Raiders of the Lost Ark (1981) | Action & Adventure
+The Dark Knight (2008) | Action & Adventure
+John Wick (2014) | Action & Adventure
+Seven Samurai (1954) | Action & Adventure
+Casino Royale (2006) | Action & Adventure
+Mission: Impossible - Fallout (2018) | Action & Adventure
+Top Gun: Maverick (2022) | Action & Adventure
+
+# ---- War ----
+Saving Private Ryan (1998) | War
+Apocalypse Now (1979) | War
+Full Metal Jacket (1987) | War
+Inglourious Basterds (2009) | War
+Dunkirk (2017) | War
+1917 (2019) | War
+Platoon (1986) | War
+
+# ---- Romance ----
+Casablanca (1942) | Romance
+Titanic (1997) | Romance
+Eternal Sunshine of the Spotless Mind (2004) | Romance
+La La Land (2016) | Romance
+Before Sunrise (1995) | Romance
+In the Mood for Love (2000) | Romance
+The Apartment (1960) | Romance
+Amelie (2001) | Romance
+
+# ---- Comedy ----
+The Grand Budapest Hotel (2014) | Comedy
+Groundhog Day (1993) | Comedy
+Some Like It Hot (1959) | Comedy
+Life Is Beautiful (1997) | Comedy
+Monty Python and the Holy Grail (1975) | Comedy
+Dr. Strangelove (1964) | Comedy
+Jojo Rabbit (2019) | Comedy
+
+# ---- Horror ----
+Psycho (1960) | Horror
+The Shining (1980) | Horror
+The Thing (1982) | Horror
+Hereditary (2018) | Horror
+Get Out (2017) | Horror
+The Exorcist (1973) | Horror
+Rosemary's Baby (1968) | Horror
+
+# ---- Animation ----
+Spirited Away (2001) | Animation
+Spider-Man: Into the Spider-Verse (2018) | Animation
+Your Name (2016) | Animation
+Grave of the Fireflies (1988) | Animation
+The Lion King (1994) | Animation
+Toy Story (1995) | Animation
+WALL-E (2008) | Animation
+Coco (2017) | Animation
+Princess Mononoke (1997) | Animation
+The Prince of Egypt (1998) | Animation
+My Neighbor Totoro (1988) | Animation
+
+# ---- Fantasy ----
+The Lord of the Rings: The Fellowship of the Ring (2001) | Fantasy
+The Lord of the Rings: The Two Towers (2002) | Fantasy
+The Lord of the Rings: The Return of the King (2003) | Fantasy
+Pan's Labyrinth (2006) | Fantasy
+The Princess Bride (1987) | Fantasy
+
+# ---- Western ----
+The Good, the Bad and the Ugly (1966) | Western
+Once Upon a Time in the West (1968) | Western
+Django Unchained (2012) | Western
+Unforgiven (1992) | Western
+High Noon (1952) | Western

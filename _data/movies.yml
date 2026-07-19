@@ -1,30 +1,382 @@
 # Movies and shows I have watched and liked, grouped by genre.
 #
-# To add a movie:
-#   1. Drop a portrait poster image into assets/img/ (for example my_movie.png).
-#   2. Add an entry under the right genre with title, poster and imdb.
-#   3. To add a whole new genre, copy a "- name:" block.
+# You can edit this by hand, but the easy way to add movies is:
+#   1. Add lines to movies_to_add.txt in the repo root:  Title | Genre
+#   2. Run:  python bin/add_movies.py
+# That looks up the IMDb link, downloads the poster, and appends it here.
 #
 # Hovering a poster shows the title; clicking opens its IMDb page.
 
+
 genres:
-  - name: Crime & Drama
+  - name: "Drama"
     movies:
-      - title: The Godfather
-        poster: assets/img/godfather.png
+      - title: "The Shawshank Redemption"
+        poster: assets/img/movies/the_shawshank_redemption.jpg
+        imdb: https://www.imdb.com/title/tt0111161/
+      - title: "Schindler's List"
+        poster: assets/img/movies/schindler_s_list.jpg
+        imdb: https://www.imdb.com/title/tt0108052/
+      - title: "Forrest Gump"
+        poster: assets/img/movies/forrest_gump.jpg
+        imdb: https://www.imdb.com/title/tt0109830/
+      - title: "12 Angry Men"
+        poster: assets/img/movies/12_angry_men.jpg
+        imdb: https://www.imdb.com/title/tt0050083/
+      - title: "Whiplash"
+        poster: assets/img/movies/whiplash.jpg
+        imdb: https://www.imdb.com/title/tt2582802/
+      - title: "Ikiru"
+        poster: assets/img/movies/ikiru.jpg
+        imdb: https://www.imdb.com/title/tt0044741/
+      - title: "Yi Yi"
+        poster: assets/img/movies/yi_yi.jpg
+        imdb: https://www.imdb.com/title/tt0244316/
+      - title: "Nomadland"
+        poster: assets/img/movies/nomadland.jpg
+        imdb: https://www.imdb.com/title/tt9770150/
+      - title: "The Virgin Suicides"
+        poster: assets/img/movies/the_virgin_suicides.jpg
+        imdb: https://www.imdb.com/title/tt0159097/
+      - title: "Moonlight"
+        poster: assets/img/movies/moonlight.jpg
+        imdb: https://www.imdb.com/title/tt4975722/
+      - title: "There Will Be Blood"
+        poster: assets/img/movies/there_will_be_blood.jpg
+        imdb: https://www.imdb.com/title/tt0469494/
+      - title: "Manchester by the Sea"
+        poster: assets/img/movies/manchester_by_the_sea.jpg
+        imdb: https://www.imdb.com/title/tt4034228/
+      - title: "A Separation"
+        poster: assets/img/movies/a_separation.jpg
+        imdb: https://www.imdb.com/title/tt1832382/
+      - title: "Dead Poets Society"
+        poster: assets/img/movies/dead_poets_society.jpg
+        imdb: https://www.imdb.com/title/tt0097165/
+      - title: "Good Will Hunting"
+        poster: assets/img/movies/good_will_hunting.jpg
+        imdb: https://www.imdb.com/title/tt0119217/
+      - title: "Do the Right Thing"
+        poster: assets/img/movies/do_the_right_thing.jpg
+        imdb: https://www.imdb.com/title/tt0097216/
+
+  - name: "Crime"
+    movies:
+      - title: "The Godfather"
+        poster: assets/img/movies/the_godfather.jpg
         imdb: https://www.imdb.com/title/tt0068646/
-      - title: Peaky Blinders
-        poster: assets/img/peakyblinders.png
+      - title: "The Godfather Part II"
+        poster: assets/img/movies/the_godfather_part_ii.jpg
+        imdb: https://www.imdb.com/title/tt0071562/
+      - title: "GoodFellas"
+        poster: assets/img/movies/goodfellas.jpg
+        imdb: https://www.imdb.com/title/tt0099685/
+      - title: "Pulp Fiction"
+        poster: assets/img/movies/pulp_fiction.jpg
+        imdb: https://www.imdb.com/title/tt0110912/
+      - title: "The Departed"
+        poster: assets/img/movies/the_departed.jpg
+        imdb: https://www.imdb.com/title/tt0407887/
+      - title: "City of God"
+        poster: assets/img/movies/city_of_god.jpg
+        imdb: https://www.imdb.com/title/tt0317248/
+      - title: "Scarface"
+        poster: assets/img/movies/scarface.jpg
+        imdb: https://www.imdb.com/title/tt0086250/
+      - title: "Heat"
+        poster: assets/img/movies/heat.jpg
+        imdb: https://www.imdb.com/title/tt0113277/
+      - title: "No Country for Old Men"
+        poster: assets/img/movies/no_country_for_old_men.jpg
+        imdb: https://www.imdb.com/title/tt0477348/
+      - title: "Once Upon a Time in America"
+        poster: assets/img/movies/once_upon_a_time_in_america.jpg
+        imdb: https://www.imdb.com/title/tt0087843/
+      - title: "Reservoir Dogs"
+        poster: assets/img/movies/reservoir_dogs.jpg
+        imdb: https://www.imdb.com/title/tt0105236/
+      - title: "Peaky Blinders"
+        poster: assets/img/movies/peaky_blinders.jpg
         imdb: https://www.imdb.com/title/tt2442560/
 
-  - name: Thriller
+  - name: "Thriller & Mystery"
     movies:
-      - title: Inception
-        poster: assets/img/inception.png
+      - title: "Inception"
+        poster: assets/img/movies/inception.jpg
         imdb: https://www.imdb.com/title/tt1375666/
+      - title: "Seven"
+        poster: assets/img/movies/seven.jpg
+        imdb: https://www.imdb.com/title/tt0114369/
+      - title: "The Silence of the Lambs"
+        poster: assets/img/movies/the_silence_of_the_lambs.jpg
+        imdb: https://www.imdb.com/title/tt0102926/
+      - title: "Parasite"
+        poster: assets/img/movies/parasite.jpg
+        imdb: https://www.imdb.com/title/tt6751668/
+      - title: "Oldboy"
+        poster: assets/img/movies/oldboy.jpg
+        imdb: https://www.imdb.com/title/tt0364569/
+      - title: "Memento"
+        poster: assets/img/movies/memento.jpg
+        imdb: https://www.imdb.com/title/tt0209144/
+      - title: "Zodiac"
+        poster: assets/img/movies/zodiac.jpg
+        imdb: https://www.imdb.com/title/tt0443706/
+      - title: "Gone Girl"
+        poster: assets/img/movies/gone_girl.jpg
+        imdb: https://www.imdb.com/title/tt2267998/
+      - title: "Prisoners"
+        poster: assets/img/movies/prisoners.jpg
+        imdb: https://www.imdb.com/title/tt1392214/
+      - title: "The Prestige"
+        poster: assets/img/movies/the_prestige.jpg
+        imdb: https://www.imdb.com/title/tt0482571/
+      - title: "Shutter Island"
+        poster: assets/img/movies/shutter_island.jpg
+        imdb: https://www.imdb.com/title/tt1130884/
+      - title: "Rear Window"
+        poster: assets/img/movies/rear_window.jpg
+        imdb: https://www.imdb.com/title/tt0047396/
 
-  - name: Action & War
+  - name: "Sci-Fi"
     movies:
-      - title: Inglourious Basterds
-        poster: assets/img/inglorious.png
+      - title: "2001: A Space Odyssey"
+        poster: assets/img/movies/2001_a_space_odyssey.jpg
+        imdb: https://www.imdb.com/title/tt0062622/
+      - title: "Blade Runner"
+        poster: assets/img/movies/blade_runner.jpg
+        imdb: https://www.imdb.com/title/tt0083658/
+      - title: "Blade Runner 2049"
+        poster: assets/img/movies/blade_runner_2049.jpg
+        imdb: https://www.imdb.com/title/tt1856101/
+      - title: "The Matrix"
+        poster: assets/img/movies/the_matrix.jpg
+        imdb: https://www.imdb.com/title/tt0133093/
+      - title: "Interstellar"
+        poster: assets/img/movies/interstellar.jpg
+        imdb: https://www.imdb.com/title/tt0816692/
+      - title: "Back to the Future"
+        poster: assets/img/movies/back_to_the_future.jpg
+        imdb: https://www.imdb.com/title/tt0088763/
+      - title: "Alien"
+        poster: assets/img/movies/alien.jpg
+        imdb: https://www.imdb.com/title/tt0078748/
+      - title: "Arrival"
+        poster: assets/img/movies/arrival.jpg
+        imdb: https://www.imdb.com/title/tt2543164/
+      - title: "Dune: Part One"
+        poster: assets/img/movies/dune_part_one.jpg
+        imdb: https://www.imdb.com/title/tt1160419/
+      - title: "Ex Machina"
+        poster: assets/img/movies/ex_machina.jpg
+        imdb: https://www.imdb.com/title/tt0470752/
+      - title: "Terminator 2: Judgment Day"
+        poster: assets/img/movies/terminator_2_judgment_day.jpg
+        imdb: https://www.imdb.com/title/tt0103064/
+      - title: "Metropolis"
+        poster: assets/img/movies/metropolis.jpg
+        imdb: https://www.imdb.com/title/tt0017136/
+
+  - name: "Action & Adventure"
+    movies:
+      - title: "Mad Max: Fury Road"
+        poster: assets/img/movies/mad_max_fury_road.jpg
+        imdb: https://www.imdb.com/title/tt1392190/
+      - title: "Gladiator"
+        poster: assets/img/movies/gladiator.jpg
+        imdb: https://www.imdb.com/title/tt0172495/
+      - title: "Die Hard"
+        poster: assets/img/movies/die_hard.jpg
+        imdb: https://www.imdb.com/title/tt0095016/
+      - title: "Raiders of the Lost Ark"
+        poster: assets/img/movies/raiders_of_the_lost_ark.jpg
+        imdb: https://www.imdb.com/title/tt0082971/
+      - title: "The Dark Knight"
+        poster: assets/img/movies/the_dark_knight.jpg
+        imdb: https://www.imdb.com/title/tt0468569/
+      - title: "John Wick"
+        poster: assets/img/movies/john_wick.jpg
+        imdb: https://www.imdb.com/title/tt2911666/
+      - title: "Seven Samurai"
+        poster: assets/img/movies/seven_samurai.jpg
+        imdb: https://www.imdb.com/title/tt0047478/
+      - title: "Casino Royale"
+        poster: assets/img/movies/casino_royale.jpg
+        imdb: https://www.imdb.com/title/tt0381061/
+      - title: "Mission: Impossible - Fallout"
+        poster: assets/img/movies/mission_impossible_fallout.jpg
+        imdb: https://www.imdb.com/title/tt4912910/
+      - title: "Top Gun: Maverick"
+        poster: assets/img/movies/top_gun_maverick.jpg
+        imdb: https://www.imdb.com/title/tt1745960/
+
+  - name: "War"
+    movies:
+      - title: "Saving Private Ryan"
+        poster: assets/img/movies/saving_private_ryan.jpg
+        imdb: https://www.imdb.com/title/tt0120815/
+      - title: "Apocalypse Now"
+        poster: assets/img/movies/apocalypse_now.jpg
+        imdb: https://www.imdb.com/title/tt0078788/
+      - title: "Full Metal Jacket"
+        poster: assets/img/movies/full_metal_jacket.jpg
+        imdb: https://www.imdb.com/title/tt0093058/
+      - title: "Inglourious Basterds"
+        poster: assets/img/movies/inglourious_basterds.jpg
         imdb: https://www.imdb.com/title/tt0361748/
+      - title: "Dunkirk"
+        poster: assets/img/movies/dunkirk.jpg
+        imdb: https://www.imdb.com/title/tt5013056/
+      - title: "1917"
+        poster: assets/img/movies/1917.jpg
+        imdb: https://www.imdb.com/title/tt8579674/
+      - title: "Platoon"
+        poster: assets/img/movies/platoon.jpg
+        imdb: https://www.imdb.com/title/tt0091763/
+
+  - name: "Romance"
+    movies:
+      - title: "Casablanca"
+        poster: assets/img/movies/casablanca.jpg
+        imdb: https://www.imdb.com/title/tt0034583/
+      - title: "Titanic"
+        poster: assets/img/movies/titanic.jpg
+        imdb: https://www.imdb.com/title/tt0120338/
+      - title: "Eternal Sunshine of the Spotless Mind"
+        poster: assets/img/movies/eternal_sunshine_of_the_spotless_mind.jpg
+        imdb: https://www.imdb.com/title/tt0338013/
+      - title: "La La Land"
+        poster: assets/img/movies/la_la_land.jpg
+        imdb: https://www.imdb.com/title/tt3783958/
+      - title: "Before Sunrise"
+        poster: assets/img/movies/before_sunrise.jpg
+        imdb: https://www.imdb.com/title/tt0112471/
+      - title: "In the Mood for Love"
+        poster: assets/img/movies/in_the_mood_for_love.jpg
+        imdb: https://www.imdb.com/title/tt0118694/
+      - title: "The Apartment"
+        poster: assets/img/movies/the_apartment.jpg
+        imdb: https://www.imdb.com/title/tt0053604/
+      - title: "Amélie"
+        poster: assets/img/movies/am_lie.jpg
+        imdb: https://www.imdb.com/title/tt0211915/
+
+  - name: "Comedy"
+    movies:
+      - title: "The Grand Budapest Hotel"
+        poster: assets/img/movies/the_grand_budapest_hotel.jpg
+        imdb: https://www.imdb.com/title/tt2278388/
+      - title: "Groundhog Day"
+        poster: assets/img/movies/groundhog_day.jpg
+        imdb: https://www.imdb.com/title/tt0107048/
+      - title: "Some Like It Hot"
+        poster: assets/img/movies/some_like_it_hot.jpg
+        imdb: https://www.imdb.com/title/tt0053291/
+      - title: "Life Is Beautiful"
+        poster: assets/img/movies/life_is_beautiful.jpg
+        imdb: https://www.imdb.com/title/tt0118799/
+      - title: "Monty Python and the Holy Grail"
+        poster: assets/img/movies/monty_python_and_the_holy_grail.jpg
+        imdb: https://www.imdb.com/title/tt0071853/
+      - title: "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb"
+        poster: assets/img/movies/dr_strangelove_or_how_i_learned_to_stop_worrying_and_love_the_bomb.jpg
+        imdb: https://www.imdb.com/title/tt0057012/
+      - title: "Jojo Rabbit"
+        poster: assets/img/movies/jojo_rabbit.jpg
+        imdb: https://www.imdb.com/title/tt2584384/
+
+  - name: "Horror"
+    movies:
+      - title: "Psycho"
+        poster: assets/img/movies/psycho.jpg
+        imdb: https://www.imdb.com/title/tt0054215/
+      - title: "The Shining"
+        poster: assets/img/movies/the_shining.jpg
+        imdb: https://www.imdb.com/title/tt0081505/
+      - title: "The Thing"
+        poster: assets/img/movies/the_thing.jpg
+        imdb: https://www.imdb.com/title/tt0084787/
+      - title: "Hereditary"
+        poster: assets/img/movies/hereditary.jpg
+        imdb: https://www.imdb.com/title/tt7784604/
+      - title: "Get Out"
+        poster: assets/img/movies/get_out.jpg
+        imdb: https://www.imdb.com/title/tt5052448/
+      - title: "The Exorcist"
+        poster: assets/img/movies/the_exorcist.jpg
+        imdb: https://www.imdb.com/title/tt0070047/
+      - title: "Rosemary's Baby"
+        poster: assets/img/movies/rosemary_s_baby.jpg
+        imdb: https://www.imdb.com/title/tt0063522/
+
+  - name: "Animation"
+    movies:
+      - title: "Spirited Away"
+        poster: assets/img/movies/spirited_away.jpg
+        imdb: https://www.imdb.com/title/tt0245429/
+      - title: "Spider-Man: Into the Spider-Verse"
+        poster: assets/img/movies/spider_man_into_the_spider_verse.jpg
+        imdb: https://www.imdb.com/title/tt4633694/
+      - title: "Your Name."
+        poster: assets/img/movies/your_name.jpg
+        imdb: https://www.imdb.com/title/tt5311514/
+      - title: "Grave of the Fireflies"
+        poster: assets/img/movies/grave_of_the_fireflies.jpg
+        imdb: https://www.imdb.com/title/tt0095327/
+      - title: "The Lion King"
+        poster: assets/img/movies/the_lion_king.jpg
+        imdb: https://www.imdb.com/title/tt0110357/
+      - title: "Toy Story"
+        poster: assets/img/movies/toy_story.jpg
+        imdb: https://www.imdb.com/title/tt0114709/
+      - title: "WALL·E"
+        poster: assets/img/movies/wall_e.jpg
+        imdb: https://www.imdb.com/title/tt0910970/
+      - title: "Coco"
+        poster: assets/img/movies/coco.jpg
+        imdb: https://www.imdb.com/title/tt2380307/
+      - title: "Princess Mononoke"
+        poster: assets/img/movies/princess_mononoke.jpg
+        imdb: https://www.imdb.com/title/tt0119698/
+      - title: "The Prince of Egypt"
+        poster: assets/img/movies/the_prince_of_egypt.jpg
+        imdb: https://www.imdb.com/title/tt0120794/
+      - title: "My Neighbor Totoro"
+        poster: assets/img/movies/my_neighbor_totoro.jpg
+        imdb: https://www.imdb.com/title/tt0096283/
+
+  - name: "Fantasy"
+    movies:
+      - title: "The Lord of the Rings: The Fellowship of the Ring"
+        poster: assets/img/movies/the_lord_of_the_rings_the_fellowship_of_the_ring.jpg
+        imdb: https://www.imdb.com/title/tt0120737/
+      - title: "The Lord of the Rings: The Two Towers"
+        poster: assets/img/movies/the_lord_of_the_rings_the_two_towers.jpg
+        imdb: https://www.imdb.com/title/tt0167261/
+      - title: "The Lord of the Rings: The Return of the King"
+        poster: assets/img/movies/the_lord_of_the_rings_the_return_of_the_king.jpg
+        imdb: https://www.imdb.com/title/tt0167260/
+      - title: "Pan's Labyrinth"
+        poster: assets/img/movies/pan_s_labyrinth.jpg
+        imdb: https://www.imdb.com/title/tt0457430/
+      - title: "The Princess Bride"
+        poster: assets/img/movies/the_princess_bride.jpg
+        imdb: https://www.imdb.com/title/tt0093779/
+
+  - name: "Western"
+    movies:
+      - title: "The Good, the Bad and the Ugly"
+        poster: assets/img/movies/the_good_the_bad_and_the_ugly.jpg
+        imdb: https://www.imdb.com/title/tt0060196/
+      - title: "Once Upon a Time in the West"
+        poster: assets/img/movies/once_upon_a_time_in_the_west.jpg
+        imdb: https://www.imdb.com/title/tt0064116/
+      - title: "Django Unchained"
+        poster: assets/img/movies/django_unchained.jpg
+        imdb: https://www.imdb.com/title/tt1853728/
+      - title: "Unforgiven"
+        poster: assets/img/movies/unforgiven.jpg
+        imdb: https://www.imdb.com/title/tt0105695/
+      - title: "High Noon"
+        poster: assets/img/movies/high_noon.jpg
+        imdb: https://www.imdb.com/title/tt0044706/

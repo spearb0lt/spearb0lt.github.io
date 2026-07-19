@@ -47,8 +47,6 @@ nav: false
   .movie:focus .movie-title { opacity: 1; }
 </style>
 
-A running list of films and shows I have enjoyed. Hover a poster to see the title, and click it to open the IMDb page.
-
 {% for genre in site.data.movies.genres %}
 
 ## {{ genre.name }}
