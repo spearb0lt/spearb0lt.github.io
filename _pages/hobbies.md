@@ -30,9 +30,9 @@ I enjoy the puzzle-solving side of programming and keep it up on CodeChef, where
 ## Movies
 
 <div style="max-width: 360px; margin: 1rem auto;">
-  {% include figure.liquid path="assets/img/inception2.png" class="img-fluid rounded z-depth-1" alt="Clash royale game" %}
+  {% include figure.liquid path="assets/img/inception2.png" class="img-fluid rounded z-depth-1" alt="Inception movie poster" %}
 </div>
-I am also an avid movie watcher and often in free time watch movies and shows for entertainment
+I love to watch movies and shows for entertainment and sometimes in free time binge-watch them. See a few of my favourites, grouped by genre, on my [movies page](/movies/).
 
 
 ## Gaming

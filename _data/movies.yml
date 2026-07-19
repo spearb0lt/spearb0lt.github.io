@@ -1,0 +1,30 @@
+# Movies and shows I have watched and liked, grouped by genre.
+#
+# To add a movie:
+#   1. Drop a portrait poster image into assets/img/ (for example my_movie.png).
+#   2. Add an entry under the right genre with title, poster and imdb.
+#   3. To add a whole new genre, copy a "- name:" block.
+#
+# Hovering a poster shows the title; clicking opens its IMDb page.
+
+genres:
+  - name: Crime & Drama
+    movies:
+      - title: The Godfather
+        poster: assets/img/godfather.png
+        imdb: https://www.imdb.com/title/tt0068646/
+      - title: Peaky Blinders
+        poster: assets/img/peakyblinders.png
+        imdb: https://www.imdb.com/title/tt2442560/
+
+  - name: Thriller
+    movies:
+      - title: Inception
+        poster: assets/img/inception.png
+        imdb: https://www.imdb.com/title/tt1375666/
+
+  - name: Action & War
+    movies:
+      - title: Inglourious Basterds
+        poster: assets/img/inglorious.png
+        imdb: https://www.imdb.com/title/tt0361748/

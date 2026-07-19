@@ -3,6 +3,8 @@ github_users:
 
 repo_description_lines_max: 2
 
+# Kept for reference (these feed the optional github-readme-stats image cards,
+# which depend on an external service that is often rate-limited).
 github_repos:
   - spearb0lt/Text-to-Handwriting-converter
   - spearb0lt/Consumer-Commission-Complaint-Agent
@@ -16,3 +18,56 @@ github_repos:
   - spearb0lt/Gesture-Video-Cotroller
   - spearb0lt/Lung-Cancer-Detection-Using-DL
   - spearb0lt/Face-Liveliness-Detection-Using-DL
+
+# Self-contained cards rendered by _pages/repositories.md.
+# These do NOT depend on any external service, so they always render.
+# To add a repo: copy a block below and edit name / url / lang / desc.
+repo_cards:
+  - name: Scania
+    url: https://github.com/spearb0lt/Scania
+    lang: Jupyter Notebook
+    desc: Privacy-preserving predictive maintenance on the IDA 2024 SCANIA-X dataset, using differential privacy and federated learning.
+  - name: SENTRAL-Multi-Spectrum-Stock-Analysis
+    url: https://github.com/spearb0lt/SENTRAL-Multi-Spectrum-Stock-Analysis
+    lang: Jupyter Notebook
+    desc: An equity analysis platform fusing fundamentals, technicals, multi-LLM sentiment and LSTM/Transformer forecasting.
+  - name: Context-Aware-Multimodal-Knowledge-Retrieval-System
+    url: https://github.com/spearb0lt/Context-Aware-Multimodal-Knowledge-Retrieval-System
+    lang: Jupyter Notebook
+    desc: A multimodal RAG pipeline over PDFs that retrieves across text, tables, figures and formulas with cited answers.
+  - name: my-codegen-api2
+    url: https://github.com/spearb0lt/my-codegen-api2
+    lang: Python
+    desc: An autonomous competitive-programming solver (FastAPI + Gemini) built for the Meta Hacker Cup 2025 AI Track.
+  - name: CodeGen-Hacker-Cup-AI-devkit
+    url: https://github.com/spearb0lt/CodeGen-Hacker-Cup-AI-devkit
+    lang: Python
+    desc: The development history and client tooling behind my-codegen-api2, my Global Rank 10 Hacker Cup solver.
+  - name: LitigatAI
+    url: https://github.com/spearb0lt/LitigatAI
+    lang: Python
+    desc: An AI litigation platform for Indian legal practice with 10 integrated tools. Live demo available.
+  - name: Consumer-Commission-Complaint-Agent
+    url: https://github.com/spearb0lt/Consumer-Commission-Complaint-Agent
+    lang: Python
+    desc: A guided-intake agent that drafts a file-ready Indian Consumer Commission complaint. Live demo available.
+  - name: Legal-RAG
+    url: https://github.com/spearb0lt/Legal-RAG
+    lang: Python
+    desc: A citation-grounded RAG chatbot over Indian statutes and case law, with hybrid vector plus BM25 retrieval.
+  - name: Lung-Cancer-Detection-Using-DL
+    url: https://github.com/spearb0lt/Lung-Cancer-Detection-Using-DL
+    lang: Jupyter Notebook
+    desc: Soft-attention deep transfer learning for lung cancer identification from CT scans (published at IEEE ISACC 2025).
+  - name: Face-Liveliness-Detection-Using-DL
+    url: https://github.com/spearb0lt/Face-Liveliness-Detection-Using-DL
+    lang: Python
+    desc: A lightweight, fast anti-spoofing model that distinguishes real faces from fake images and videos.
+  - name: Gesture-Video-Cotroller
+    url: https://github.com/spearb0lt/Gesture-Video-Cotroller
+    lang: Python
+    desc: A webcam hand-tracking system to control media playback with single-hand and dual-hand gestures.
+  - name: Text-to-Handwriting-converter
+    url: https://github.com/spearb0lt/Text-to-Handwriting-converter
+    lang: Jupyter Notebook
+    desc: Converts typed text (including tables) into realistic handwriting and exports it as an A4 PDF.
