@@ -1,19 +1,42 @@
 ---
-layout: book-shelf
-title: bookshelf
-permalink: /books/
+layout: page
+title: reads
+permalink: /reads/
 nav: true
-collection: books
+nav_order: 3.5
+description: Blogs, papers, posts and other things I have read and found interesting, with my own notes.
 ---
 
-> What an astonishing thing a book is. It's a flat object made from a tree with flexible parts on which are imprinted lots of funny dark squiggles. But one glance at it and you're inside the mind of another person, maybe somebody dead for thousands of years. Across the millennia, an author is speaking clearly and silently inside your head, directly to you. Writing is perhaps the greatest of human inventions, binding together people who never knew each other, citizens of distant epochs. Books break the shackles of time. A book is proof that humans are capable of working magic.
->
-> -- Carl Sagan, Cosmos, Part 11: The Persistence of Memory (1980)
-
-## Books that I am reading, have read, or will read
-
-<div id="book-suggest-wrap">
 <style>
+  .read-card {
+    border: 1px solid var(--global-divider-color, rgba(0, 0, 0, 0.1));
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    margin: 0.9rem 0;
+    background: var(--global-card-bg-color, #fff);
+  }
+  .read-meta { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.35rem; }
+  .read-type {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--global-theme-color, #b509ac);
+    padding: 0.12rem 0.5rem;
+    border-radius: 999px;
+  }
+  .read-date { font-size: 0.78rem; color: var(--global-text-color-light, #828282); }
+  .read-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--global-theme-color, #b509ac);
+    text-decoration: none !important;
+  }
+  .read-title:hover { text-decoration: underline !important; }
+  .read-source { font-size: 0.82rem; color: var(--global-text-color-light, #828282); margin-top: 0.15rem; }
+  .read-note { font-size: 0.92rem; line-height: 1.5; margin: 0.6rem 0 0; }
+
   .suggest-form {
     max-width: 380px;
     margin: 1.5rem 0 1rem;
@@ -70,35 +93,53 @@ collection: books
   .suggest-details .suggest-form { margin-top: 0.5rem; }
 </style>
 
+A running collection of blogs, papers, posts and other things I have read and found worth keeping, along with my own notes on each.
+
+{% for it in site.data.reads.items %}
+<div class="read-card">
+  <div class="read-meta">
+    {% if it.type %}<span class="read-type">{{ it.type }}</span>{% endif %}
+    {% if it.date %}<span class="read-date">{{ it.date }}</span>{% endif %}
+  </div>
+  <a class="read-title" href="{{ it.url }}" target="_blank" rel="noopener">{{ it.title }}</a>
+  {% if it.source %}<div class="read-source">{{ it.source }}</div>{% endif %}
+  {% if it.note %}<p class="read-note">{{ it.note | markdownify }}</p>{% endif %}
+</div>
+{% endfor %}
+
 <hr class="suggest-divider">
 
 <details class="suggest-details">
 <summary>Send a suggestion</summary>
-<p class="suggest-intro">Read something great? Recommend it and I might add it to the shelf.</p>
+<p class="suggest-intro">Come across a great blog, paper or post? Send it over and I might add it here.</p>
 
-<form id="book-suggest" class="suggest-form">
+<form id="read-suggest" class="suggest-form">
   <input type="hidden" name="access_key" value="3800b398-13c6-478e-8f80-4ba6a73373ff">
-  <input type="hidden" name="subject" value="New book suggestion from your portfolio">
-  <input type="hidden" name="from_name" value="Portfolio bookshelf page">
+  <input type="hidden" name="subject" value="New read suggestion from your portfolio">
+  <input type="hidden" name="from_name" value="Portfolio reads page">
   <input type="checkbox" name="botcheck" class="sf-hp" tabindex="-1" autocomplete="off">
 
-  <label for="bs-book">Book title *</label>
-  <input id="bs-book" type="text" name="book" required placeholder="e.g. Deep Learning">
+  <label for="rs-title">Title or link *</label>
+  <input id="rs-title" type="text" name="item" required placeholder="e.g. a blog, paper or post">
 
-  <label for="bs-author">Author (optional)</label>
-  <input id="bs-author" type="text" name="author" placeholder="e.g. Ian Goodfellow">
+  <label for="rs-link">Link (optional)</label>
+  <input id="rs-link" type="url" name="link" placeholder="https://...">
 
-  <label for="bs-why">Why should I read it? (optional)</label>
-  <input id="bs-why" type="text" name="why" placeholder="A line on what makes it worth reading">
+  <label for="rs-type">Type (optional)</label>
+  <input id="rs-type" type="text" name="type" list="rs-type-list" placeholder="e.g. Paper, Blog, Post">
+  <datalist id="rs-type-list">
+    <option value="Paper"></option>
+    <option value="Blog"></option>
+    <option value="Post"></option>
+    <option value="Video"></option>
+    <option value="Article"></option>
+  </datalist>
 
-  <label for="bs-pdf">Link to a PDF (optional)</label>
-  <input id="bs-pdf" type="url" name="pdf_link" placeholder="https://...">
+  <label for="rs-why">Why is it worth reading? (optional)</label>
+  <input id="rs-why" type="text" name="why" placeholder="A line on what makes it interesting">
 
-  <label for="bs-buy">Link to buy (optional)</label>
-  <input id="bs-buy" type="url" name="buy_link" placeholder="https://...">
-
-  <label for="bs-from">Your name (optional)</label>
-  <input id="bs-from" type="text" name="from" placeholder="So I know who to thank">
+  <label for="rs-from">Your name (optional)</label>
+  <input id="rs-from" type="text" name="from" placeholder="So I know who to thank">
 
   <button type="submit">Send suggestion</button>
   <p class="sf-result" role="status" aria-live="polite"></p>
@@ -107,17 +148,7 @@ collection: books
 
 <script>
   (function () {
-    function moveToEnd() {
-      var wrap = document.getElementById("book-suggest-wrap");
-      // move the suggestion box below the book grid (the layout renders it above by default)
-      if (wrap && wrap.parentNode) wrap.parentNode.appendChild(wrap);
-    }
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", moveToEnd);
-    } else {
-      moveToEnd();
-    }
-    var f = document.getElementById("book-suggest");
+    var f = document.getElementById("read-suggest");
     if (!f) return;
     var res = f.querySelector(".sf-result");
     f.addEventListener("submit", function (e) {
@@ -137,4 +168,3 @@ collection: books
     });
   })();
 </script>
-</div>

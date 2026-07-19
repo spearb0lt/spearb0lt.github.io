@@ -1,0 +1,27 @@
+# Blogs, papers, posts and other things I have read and found interesting,
+# with my own notes / take on each.
+#
+# To add an item, copy a block below and edit it:
+#   - title:  the name of the blog / paper / post
+#     url:    where it lives
+#     type:   Paper | Blog | Post | Video | Article  (shown as a small badge)
+#     source: author or site (optional)
+#     date:   year or date (optional)
+#     note:   your own view / why it is worth reading (optional; supports basic markdown)
+#
+# The two entries below are examples. Replace them with your own.
+
+items:
+  - title: "Attention Is All You Need"
+    url: https://arxiv.org/abs/1706.03762
+    type: Paper
+    source: Vaswani et al. (NeurIPS 2017)
+    date: 2017
+    note: "Example entry, replace with your own. The paper that introduced the Transformer architecture. Add your own takeaways and why it stuck with you."
+
+  - title: "The Illustrated Transformer"
+    url: https://jalammar.github.io/illustrated-transformer/
+    type: Blog
+    source: Jay Alammar
+    date: 2018
+    note: "Example entry, replace with your own. A clear, visual walkthrough of how the Transformer works. Swap in a blog you liked with your notes."
