@@ -2,24 +2,35 @@
 layout: page
 title: Privacy-Preserving Predictive Maintenance
 description: A federated, differentially private framework for RUL prediction on the IDA 2024 SCANIA-X challenge.
-img: assets/img/3.jpg
+img: assets/img/proj_1.jpg
 importance: 1
 category: research
 related_publications: true
 ---
 
-**Links:** [GitHub](https://github.com/spearb0lt/Scania)
+**Links:** [GitHub repository](https://github.com/spearb0lt/Scania)
 
-Built as part of my research at the VANET Lab, IIT Jodhpur, this project tackles the IDA 2024 Industrial Challenge: predicting the Remaining Useful Life (RUL) of components in the SCANIA-X dataset while keeping the training data private. The work is described in our paper {% cite dev2025dphybrid %}.
+Developed during my research at the VANET Lab, IIT Jodhpur, this project is an end-to-end privacy-preserving Predictive Maintenance (PdM) framework built for the **IDA 2024 Industrial Challenge** on the SCANIA-X truck telemetry dataset. The goal is to predict the Remaining Useful Life (RUL) of components accurately while guaranteeing that the sensitive training data cannot be reconstructed or inferred. The methodology is described in our paper {% cite dev2025dphybrid %}.
 
-## What it does
+The framework is deliberately architected to be **cross-industry applicable**: any dataset that combines numerical time-series with categorical metadata can plug into the same pipeline with minimal configuration changes.
 
-- Preprocesses the SCANIA-X dataset and engineers a hybrid architecture that combines numerical and categorical features into transformer embeddings using a TabTransformer for minimal information loss.
-- Implements several differential privacy (DP) algorithms, including Spectral-DP and DP-SGD, to protect training data.
-- Designs a global model architecture that generalises to other predictive maintenance datasets involving numerical, categorical or multimodal features.
-- Uses a federated training approach based on the `flwr` library, aggregating a global model across heterogeneous clients with different compute, parameters and hyperparameters, mirroring real industrial equipment.
+## Hybrid TabTransformer architecture
 
-## Results
+A two-stage model designed for multimodal industrial telemetry:
 
-- Currently the best RUL prediction model on the dataset with an MSE of 2725 while preserving training-data privacy.
-- Developed an advanced Membership Inference Attack (MIA) that considers white-box, gray-box and black-box features along with time-series specific seasonality and trend features, achieving an MIA success rate (AUC) of 49.12% and MIA accuracy of 49.59%, confirming that the training data stays well protected.
+- A `TimeSeriesEmbedder` (a two-layer Transformer encoder) turns sliding windows of raw sensor data into a compact fixed-size embedding, capturing temporal dependencies across 70 time steps of 105 sensor features.
+- A `CombinedRULModel` then feeds that time-series embedding, together with 8 ordinal-encoded vehicle-specification features, into a TabTransformer for the final RUL regression.
+- The design minimises information loss across both modalities: last-step pooling preserves the causal state, while the TabTransformer's categorical embeddings avoid the information loss of one-hot encoding.
+
+## Custom differential privacy
+
+Two differential privacy mechanisms were implemented from scratch, without relying on third-party DP libraries for the core gradient manipulation:
+
+- **Spectral-DP**, a gradient perturbation method that operates in the SVD (spectral) domain: singular values are clipped and perturbed instead of the raw gradients, giving more information-theoretically compact noise injection.
+- **DP-SGD** with per-sample gradient clipping and Gaussian noise, and a custom Renyi Differential Privacy (Moments) accountant to track the (epsilon, delta) budget across training.
+
+## Federated learning and privacy audit
+
+- Federated training is built on the Flower (`flwr`) library, including a heterogeneous strategy where each client receives a different per-round configuration (local epochs, batch size, learning rate, optimizer, model depth and DP settings), mirroring real industrial deployments with varied hardware and privacy requirements.
+- The framework is the current **best RUL prediction model on the dataset with an MSE of 2725** while preserving training-data privacy.
+- A comprehensive Membership Inference Attack (white-box, gray-box and black-box, plus time-series specific seasonality and trend features) achieves an AUC of 49.12% and accuracy of 49.59%, both near random, confirming that the training data stays well protected.

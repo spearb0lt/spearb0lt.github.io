@@ -101,12 +101,12 @@ cv:
       - title: Lung Cancer Identification from CT Scans using a Soft-attention enabled Deep Transfer Learning Model
         authors:
           - Shubhro Dev
-          - P. Roy
+          - P. S. Roy
           - N. Chakraborty
           - Ram Sarkar
         publisher: IEEE ISACC 2025
         releaseDate: 2025
-        summary: Accepted at IEEE ISACC 2025.
+        summary: "Published at IEEE ISACC 2025 (pp. 254-259). DOI: 10.1109/ISACC65211.2025.10969319."
 
       - title: A Differentially Private Hybrid Transformer-Mamba Architecture for Industrial Predictive Maintenance on Multivariate Time Series Data
         authors:
