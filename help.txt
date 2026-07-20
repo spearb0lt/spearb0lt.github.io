@@ -4,3 +4,39 @@ Use published: false in the page's front matter. Jekyll then doesn't build it at
 
 nav: false only hides it from the navbar — the page still builds and is reachable by URL (that's what you saw).
 Commenting out the page does NOT remove it: if you comment out the body, Jekyll still builds the page from its front matter and it's reachable at the URL, just blank; and you can't cleanly comment out YAML front matter. So published: false is the right tool.
+
+
+Content lives in _data/reads.yml. 
+
+
+To make faster: MathJax (tex-mml-chtml.js, ~1MB of JavaScript) — the single heaviest item, loaded because enable_math: true in _config.yml.  make enable_math: false
+_config.yml line 465: enable_math: true → change to false
+
+
+For citation part put id from  the gscholar
+
+latest_posts.enabled: false in _pages/about.md, 
+announcements.enabled
+_data/socials.yml. rss_icon: to false
+
+
+
+3. SEO — what it is + best steps
+SEO = making your site show up in Google when someone searches "Shubhro Dev", and making shared links show a rich preview (your photo + title) on LinkedIn/WhatsApp/etc.
+
+What I just enabled (was off by default):
+
+serve_og_meta: true + an absolute og:image (https://spearb0lt.github.io/assets/img/prof_pic.jpg) → link previews with your photo, name, and description.
+serve_schema_org: true → structured data that tells Google you're a person.
+(You already had a sitemap.xml, robots.txt, correct url, and keywords/description.)
+Best steps to be easily findable (do these after you deploy the site live):
+
+Deploy it (push to GitHub → GitHub Pages serves it publicly). It must be live and public for Google to index.
+Google Search Console (most important):
+Go to search.google.com/search-console → add property https://spearb0lt.github.io.
+Verify ownership (HTML-tag method): copy the code it gives you, then set google_site_verification: <code> and enable_google_verification: true in _config.yml, redeploy, and click Verify.
+Submit your sitemap: https://spearb0lt.github.io/sitemap.xml. This gets Google to crawl and index you faster and shows you search stats.
+Backlinks (huge for a personal name): put your portfolio URL in your LinkedIn (Contact info + Featured), GitHub profile (website + bio), resume, ORCID, Google Scholar, ResearchGate. Search engines rank a personal site higher when trusted profiles link to it.
+Optional: Bing Webmaster Tools (same idea, bing_site_verification), and Google Analytics (analytics.google) if you want visitor stats (not ranking, just tracking).
+
+
