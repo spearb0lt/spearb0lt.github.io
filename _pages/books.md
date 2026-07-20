@@ -2,6 +2,7 @@
 layout: book-shelf
 title: bookshelf
 permalink: /books/
+published: false # set to true (or remove this line) to bring the page back
 nav: true
 collection: books
 ---

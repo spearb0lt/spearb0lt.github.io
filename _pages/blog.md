@@ -2,6 +2,7 @@
 layout: default
 permalink: /blog/
 title: blog
+published: false # set to true (or remove this line) to bring the page back
 nav: true
 nav_order: 1
 pagination:
