@@ -1,0 +1,6 @@
+to add movies go to spearb0lt.github.io\movies_to_add.txt then write here, next go to spearb0lt.github.io\bin\add_movies.py and run it
+
+Use published: false in the page's front matter. Jekyll then doesn't build it at all — no HTML, not reachable by URL, not in the sitemap or search. The .md stays for later; set published: true (or delete the line) to bring it back.
+
+nav: false only hides it from the navbar — the page still builds and is reachable by URL (that's what you saw).
+Commenting out the page does NOT remove it: if you comment out the body, Jekyll still builds the page from its front matter and it's reachable at the URL, just blank; and you can't cleanly comment out YAML front matter. So published: false is the right tool.
