@@ -2,9 +2,9 @@
 layout: page
 title: Text-to-Handwriting Converter
 description: Converts typed text (including tables) into realistic handwriting and exports it as an A4 PDF.
-img: assets/img/proj_14.jpg
-importance: 8
-category: applications
+img: assets/img/project/text-to-handwriting.jpg
+importance: 2
+category: useful-tools
 ---
 
 **Links:** [GitHub repository](https://github.com/spearb0lt/Text-to-Handwriting-converter)

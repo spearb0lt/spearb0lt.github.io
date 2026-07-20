@@ -2,9 +2,9 @@
 layout: page
 title: Federated Heart Disease Prediction
 description: Predicting heart disease from clinical biomarkers using federated learning.
-img: assets/img/proj_10.jpg
+img: assets/img/project/federated_heart_disease.jpg
 importance: 4
-category: research
+category: biomedical/cv
 ---
 
 **Links:** [GitHub repository](https://github.com/spearb0lt/Heart-Disease-Prediction-with-Biomarkers-using-Federated-Learning)

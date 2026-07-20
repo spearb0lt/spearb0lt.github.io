@@ -2,9 +2,9 @@
 layout: page
 title: Lung Cancer Detection with Soft Attention
 description: A soft-attention deep transfer learning model for lung cancer identification from CT scans and histopathology.
-img: assets/img/proj_8.jpg
+img: assets/img/project/lung_cancer_dl.jpg
 importance: 2
-category: research
+category: biomedical/cv
 related_publications: true
 ---
 

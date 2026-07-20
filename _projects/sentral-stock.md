@@ -2,9 +2,9 @@
 layout: page
 title: SENTRAL - Multi Spectrum Stock Analysis
 description: An end-to-end equity analysis platform fusing fundamentals, technicals, multi-LLM sentiment and ML forecasting.
-img: assets/img/proj_2.jpg
-importance: 5
-category: applications
+img: assets/img/project/sentral-stock.jpg
+importance: 2
+category: nlp
 ---
 
 **Links:** [GitHub repository](https://github.com/spearb0lt/SENTRAL-Multi-Spectrum-Stock-Analysis)

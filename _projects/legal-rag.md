@@ -2,9 +2,9 @@
 layout: page
 title: Indian Legal RAG
 description: A citation-grounded retrieval-augmented chatbot over Indian statutes and case law.
-img: assets/img/proj_7.jpg
-importance: 4
-category: applications
+img: assets/img/project/legal-rag.jpg
+importance: 2
+category: nlp
 ---
 
 **Links:** [GitHub repository](https://github.com/spearb0lt/Legal-RAG)

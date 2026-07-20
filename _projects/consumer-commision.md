@@ -2,9 +2,9 @@
 layout: page
 title: Consumer Commission Complaint Agent
 description: A guided-intake agent that turns a plain-language grievance into a file-ready Indian Consumer Commission complaint.
-img: assets/img/proj_6.jpg
+img: assets/img/project/consumer-commision.jpg
 importance: 3
-category: applications
+category: agentic-ai/llm
 ---
 
 **Links:** [GitHub repository](https://github.com/spearb0lt/Consumer-Commission-Complaint-Agent) and [live demo](https://consumer-commission-complaint.streamlit.app/)

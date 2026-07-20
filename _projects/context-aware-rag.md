@@ -2,9 +2,9 @@
 layout: page
 title: Context-Aware Multimodal Knowledge Retrieval
 description: A fully multimodal RAG pipeline for PDFs that retrieves across text, tables, figures and formulas with cited answers.
-img: assets/img/proj_3.jpg
-importance: 6
-category: research
+img: assets/img/project/context-aware-rag.jpg
+importance: 1
+category: nlp
 ---
 
 **Links:** [GitHub repository](https://github.com/spearb0lt/Context-Aware-Multimodal-Knowledge-Retrieval-System)

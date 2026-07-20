@@ -4,8 +4,8 @@ title: projects
 permalink: /projects/
 description: A selection of my research and engineering projects.
 nav: true
-nav_order: 3
-display_categories: [research, applications, Agentic-AI/LLM, NLP, Research, BiomedicalxDL, Tool]
+nav_order: 2.5
+display_categories: [nlp, time-series/pdm, agentic-ai/llm, biomedical/cv, useful-tools]
 horizontal: false
 ---
 

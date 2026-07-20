@@ -111,7 +111,7 @@ analytics:
   google: G-4YL5W0Z598 # your Google Analytics measurement ID (format: G-XXXXXXXXXX)
   cronitor: # cronitor RUM analytics site ID (format: XXXXXXXXX)
   pirsch: # your Pirsch analytics site ID (length 32 characters)
-  openpanel: # your Openpanel analytics client ID (format: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX)
+  openpanel: 375ad792-d894-4444-90b2-393ddea4e466 # your Openpanel analytics client ID (format: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX)
 
 # For Google Search Console, see https://support.google.com/webmasters/answer/9008080?hl=en#meta_tag_verification&zippy=%2Chtml-tag
 google_site_verification: ho7m5af0DhzI8D3RK4_QVNs2gNa9HOUb351o7QKV3wo # your google-site-verification ID (Google Search Console)

@@ -2,9 +2,9 @@
 layout: page
 title: Privacy-Preserving Predictive Maintenance
 description: A federated, differentially private framework for RUL prediction on the IDA 2024 SCANIA-X challenge.
-img: assets/img/proj_1.jpg
+img: assets/img/project/privacy_preserving_pdm.jpg
 importance: 1
-category: research
+category: time-series/pdm
 related_publications: true
 ---
 

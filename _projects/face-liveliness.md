@@ -2,9 +2,9 @@
 layout: page
 title: Face Liveliness Detection
 description: A lightweight, fast anti-spoofing model that tells real faces from fake images and videos.
-img: assets/img/proj_11.jpg
-importance: 5
-category: research
+img: assets/img/project/face-liveliness.jpg
+importance: 1
+category: biomedical/cv
 ---
 
 **Links:** [GitHub repository](https://github.com/spearb0lt/Face-Liveliness-Detection-Using-DL)

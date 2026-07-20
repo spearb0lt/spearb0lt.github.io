@@ -2,9 +2,9 @@
 layout: page
 title: CodeGen - Autonomous Competitive Programming Solver
 description: An end-to-end AI solver built for the Meta Hacker Cup 2025 AI Track.
-img: assets/img/proj_4.jpg
-importance: 1
-category: applications
+img: assets/img/project/codegen-mhc2025.jpg
+importance: 2
+category: agentic-ai/llm
 ---
 
 **Links:** [my-codegen-api2 (production API)](https://github.com/spearb0lt/my-codegen-api2) and [CodeGen-Hacker-Cup-AI-devkit (devkit)](https://github.com/spearb0lt/CodeGen-Hacker-Cup-AI-devkit)

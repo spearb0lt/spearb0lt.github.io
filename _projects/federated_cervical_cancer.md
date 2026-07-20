@@ -2,9 +2,9 @@
 layout: page
 title: Federated Cervical Cancer Detection
 description: Cervical cancer detection on Pap smear images, comparing three federated learning strategies.
-img: assets/img/proj_9.jpg
+img: assets/img/project/federated_cervical_cancer.jpg
 importance: 3
-category: research
+category: biomedical/cv
 ---
 
 **Links:** [GitHub repository](https://github.com/spearb0lt/Cervical-Cancer-Detection-implementing-FL-using-Pap-Smear-Dataset)

@@ -2,8 +2,10 @@
 layout: page
 title: reads
 permalink: /reads/
-nav: true
-nav_order: 3.5
+# nav: true
+published: false # set to true (or remove this line) to bring the page back
+nav: false
+nav_order: 5
 description: Blogs, papers, posts and other things I have read and found interesting, with my own notes.
 ---
 

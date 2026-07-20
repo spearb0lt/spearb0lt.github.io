@@ -2,9 +2,9 @@
 layout: page
 title: Gesture Video Controller
 description: A webcam hand-tracking system to control video playback and system actions with gestures.
-img: assets/img/proj_13.jpg
-importance: 7
-category: applications
+img: assets/img/project/gesture-video-controller.jpg
+importance: 3
+category: useful-tools
 ---
 
 **Links:** [GitHub repository](https://github.com/spearb0lt/Gesture-Video-Cotroller)

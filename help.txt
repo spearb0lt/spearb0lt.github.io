@@ -40,3 +40,45 @@ Backlinks (huge for a personal name): put your portfolio URL in your LinkedIn (C
 Optional: Bing Webmaster Tools (same idea, bing_site_verification), and Google Analytics (analytics.google) if you want visitor stats (not ranking, just tracking).
 
 
+How to run the site locally, anytime
+You don't have Ruby installed, so the reliable way is Docker (what we've been using):
+
+1.Start Docker Desktop (wait until its whale icon says "running").
+2.Open a terminal (PowerShell or Git Bash) and go to the repo:
+
+cd "C:\Users\Shubhro Dev\Documents\GitHub\spearb0lt.github.io"
+Start the site:
+
+3.docker compose up -d
+(If it ever tries a long build on a fresh machine, run docker pull amirpourmand/al-folio:latest once, then docker compose up -d --no-build.)
+Wait ~20–30 seconds for the first build, then open http://127.0.0.1:8080/
+While it's running: edit any page/content file and it auto-rebuilds (just refresh the browser). If you change _config.yml or anything in _data/, run docker compose restart to pick it up.
+4.Stop it when done:
+
+docker compose down
+-----------------
+this theme auto-converts images (including .gif) to static .webp, and figure.liquid serves that webp. So if you use {% raw %}{% include figure.liquid %}{% endraw %} (or the project card img:), a GIF shows a frozen frame, not the animation.
+
+GIF that actually animates → use a plain <img> (bypasses the webp pipeline). Put this anywhere in a page body (404, a project's body, etc.):
+
+
+<div style="max-width: 360px; margin: 1rem auto;">
+  <img src="/assets/img/spiral.gif" class="img-fluid rounded z-depth-1" alt="spiral animation" loading="eager">
+</div>
+
+For a video (put the file in assets/video/):
+
+
+<video src="/assets/video/demo.mp4" autoplay loop muted playsinline width="100%"></video>
+--
+Video (mp4/webm) → use the theme's video.liquid include (videos aren't touched by the image pipeline). Put the file in assets/video/ and:
+{% raw %}{% include video.liquid path="assets/video/demo.mp4" class="img-fluid rounded z-depth-1" autoplay=true loop=true controls=true %}{% endraw %}
+
+raw tag if you prefer full control:
+<video src="{% raw %}{{ '/assets/video/demo.mp4' | relative_url }}{% endraw %}" autoplay loop muted playsinline width="100%"></video>
+
+On a project's card thumbnail (the img: field): because the card goes through figure.liquid, a GIF there will be static. Two ways to get animation:
+
+
+Recommended: keep the card as a normal image, and show the GIF/video in the project's body with the <img>/video.liquid snippets above (that's what sites like mayankm96's do — the animation lives in the project page, not always the tiny card).
+Site-wide: remove ".gif" from imagemagick.input_formats in _config.yml so GIFs are never converted; then a GIF used via figure.liquid/img: will animate (you lose webp optimization for GIFs only).

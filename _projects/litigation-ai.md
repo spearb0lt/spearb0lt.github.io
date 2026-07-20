@@ -2,9 +2,9 @@
 layout: page
 title: LitigatAI
 description: An AI-powered litigation and dispute-resolution platform for Indian legal practice.
-img: assets/img/proj_5.jpg
-importance: 2
-category: applications
+img: assets/img/project/litigation-ai.jpg
+importance: 1
+category: agentic-ai/llm
 ---
 
 **Links:** [GitHub repository](https://github.com/spearb0lt/LitigatAI) and [live demo](https://litigat-ai.streamlit.app/)

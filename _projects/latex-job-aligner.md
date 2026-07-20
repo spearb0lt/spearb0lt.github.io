@@ -2,9 +2,9 @@
 layout: page
 title: Job-Aligner
 description: A tool to tailor a LaTeX resume to any job description and compile a submission-ready PDF.
-img: assets/img/proj_12.jpg
-importance: 6
-category: applications
+img: assets/img/project/latex-job-aligner.jpg
+importance: 1
+category: useful-tools
 ---
 
 **Links:** [GitHub repository](https://github.com/spearb0lt/Job-Aligner-Latex-to-PDF-Generator)
