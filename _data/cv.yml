@@ -2,7 +2,7 @@ cv:
   name: Shubhro Dev
   label: AI/ML Researcher
   email: shubhro2004@gmail.com
-  phone: +91 82729 79689
+  phone: +91 8272979689
   location: Kolkata, India
   image: ""
   summary: >
@@ -32,10 +32,18 @@ cv:
       - institution: Bharatiya Vidya Bhavans, Kolkata
         location: Kolkata, India
         area: Class 12th (CBSE Board)
-        studyType: Senior Secondary
+        studyType: Higher Secondary
         start_date: 2020
         end_date: 2022
         score: "90.60%"
+
+      - institution: Julien Day School, Elgin Road, Kolkata
+        location: Kolkata, India
+        area: Class 10th (ICSE Board)
+        studyType: Senior Secondary
+        start_date: 2018
+        end_date: 2020
+        score: "94.60%"
 
     Experience:
       - company: Siemens
@@ -186,6 +194,10 @@ cv:
         date: 2022
         awarder: WBJEE Board
 
+      - title: AIR 1899, MHT-CET 2022
+        date: 2022
+        awarder: Government of Maharashtra
+
     Certificates:
       - name: Summer of Quant 2024
         issuer: IIT Kharagpur
@@ -201,6 +213,10 @@ cv:
         issuer: DeepLearning.AI
         icon: fa-solid fa-brain
 
+      - name: Machine Learning Specialization
+        issuer: DeepLearning.AI
+        icon: fa-solid fa-robot
+        
     Skills:
       - name: Languages
         icon: fa-solid fa-code
