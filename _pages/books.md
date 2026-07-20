@@ -73,7 +73,7 @@ collection: books
 <hr class="suggest-divider">
 
 <details class="suggest-details">
-<summary>Send a suggestion</summary>
+<summary>Suggest me books to read</summary>
 <p class="suggest-intro">Read something great? Recommend it and I might add it to the shelf.</p>
 
 <form id="book-suggest" class="suggest-form">

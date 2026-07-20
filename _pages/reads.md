@@ -110,7 +110,7 @@ A running collection of blogs, papers, posts and other things I have read and fo
 <hr class="suggest-divider">
 
 <details class="suggest-details">
-<summary>Send a suggestion</summary>
+<summary>Have something I should read?</summary>
 <p class="suggest-intro">Come across a great blog, paper or post? Send it over and I might add it here.</p>
 
 <form id="read-suggest" class="suggest-form">

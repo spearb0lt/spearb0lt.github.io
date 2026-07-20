@@ -122,7 +122,7 @@ nav: false
 <hr class="suggest-divider">
 
 <details class="suggest-details">
-<summary>Send a suggestion</summary>
+<summary>Have good recommmendation?</summary>
 <p class="suggest-intro">Seen something you think I should watch? Send it my way and it might end up on this page.</p>
 
 <form id="movie-suggest" class="movie-suggest">

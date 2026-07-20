@@ -3,6 +3,7 @@ layout: profiles
 permalink: /people/
 title: profile
 description: A little more about me.
+published: false # set to true (or remove this line) to bring the page back
 nav: false
 nav_order: 7
 
