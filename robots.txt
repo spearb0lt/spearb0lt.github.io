@@ -2,3 +2,4 @@ User-agent: *
 Disallow:
 
 Sitemap: https://spearb0lt.github.io/sitemap.xml
+Sitemap: https://spearb0lt.github.io/acad-homepage/sitemap.xml
