@@ -234,6 +234,7 @@ exclude:
   - _pages/about_einstein.md
   - _pages/about_shubhro.md
   - movies_to_add.txt
+  - serve.ps1
   - purgecss.config.js
   - README.md
   - readme_preview/
