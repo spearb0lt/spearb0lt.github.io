@@ -1,0 +1,35 @@
+#!/bin/sh
+# Auto-refresh Google Scholar citations on push.
+#
+# Runs bin/update_citations_local.py in --if-scraped mode: it only rewrites
+# _data/citations.yml when a live Google Scholar scrape actually succeeds, so a
+# blocked scrape (the common case) is a harmless no-op and never wipes your data.
+#
+# If the scrape DID change the numbers, the file is committed and this push is
+# stopped so you can re-run `git push` with the update included. When nothing
+# changed (blocked, or same counts) the push proceeds normally.
+#
+# Enabled via `git config core.hooksPath .githooks` (already set on this machine;
+# re-run that command in a fresh clone to re-enable).
+
+# Prefer `python`, fall back to `python3`.
+PY=python
+command -v "$PY" >/dev/null 2>&1 || PY=python3
+
+# Compare the file's content hash before/after so we react ONLY to a change the
+# scrape itself made — not to unrelated pre-existing edits to citations.yml.
+before=$(git hash-object _data/citations.yml 2>/dev/null || echo none)
+"$PY" bin/update_citations_local.py --if-scraped || true
+after=$(git hash-object _data/citations.yml 2>/dev/null || echo none)
+
+if [ "$before" != "$after" ]; then
+  echo ""
+  echo "  📚 A live scrape changed your Google Scholar citations — committing _data/citations.yml."
+  git add _data/citations.yml
+  git commit -m "Auto-update Google Scholar citations" >/dev/null
+  echo "  ✅ Committed. Run 'git push' again to send the update."
+  echo ""
+  exit 1
+fi
+
+exit 0

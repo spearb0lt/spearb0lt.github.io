@@ -1,11 +1,16 @@
 name: Update Google Scholar Citations
 
+# NOTE: Google Scholar blocks GitHub Actions datacenter IPs, so the scheduled
+# `scholarly` fetch below almost always fails and never updates _data/citations.yml.
+# Citations are maintained locally instead via `python bin/update_citations_local.py`
+# (see that script). The automatic schedule is disabled to avoid noisy failure runs;
+# you can still trigger this manually from the Actions tab if you want to try CI.
 on:
-  schedule:
-    - cron: "0 0 * * 1" # Monday
-    - cron: "0 0 * * 3" # Wednesday
-    - cron: "0 0 * * 5" # Friday
   workflow_dispatch:
+  # schedule:
+  #   - cron: "0 0 * * 1" # Monday
+  #   - cron: "0 0 * * 3" # Wednesday
+  #   - cron: "0 0 * * 5" # Friday
 
 jobs:
   update-citations:
