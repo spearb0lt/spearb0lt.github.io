@@ -86,7 +86,7 @@ navbar_fixed: true
 footer_fixed: true
 search_enabled: true
 socials_in_search: true
-posts_in_search: true
+posts_in_search: false # blog is hidden (blog.md published: false); keep its posts out of Cmd-K search too
 bib_search: true
 
 # Dimensions
@@ -296,6 +296,35 @@ defaults:
       path: "assets"
     values:
       sitemap: false
+  # Hide the subpages of hidden listing pages. The parent pages (blog.md, books.md,
+  # teaching.md) are `published: false`, but their collection documents are generated
+  # independently. Each block below unpublishes a whole collection, so its subpages stop
+  # rendering AND drop out of the Cmd-K search index.
+  #
+  # TOGGLE: a block that is UNCOMMENTED = section HIDDEN. To bring a section back,
+  # comment out its 4 lines (prefix each with "# ") and set the matching listing page
+  # to `published: true` (for blog, also flip `posts_in_search` back to true).
+
+  # --- BLOG (posts) : HIDDEN ---
+  - scope:
+      path: ""
+      type: posts
+    values:
+      published: false
+
+  # --- BOOKS : HIDDEN ---
+  - scope:
+      path: ""
+      type: books
+    values:
+      published: false
+
+  # --- TEACHING (teachings) : HIDDEN ---
+  - scope:
+      path: ""
+      type: teachings
+    values:
+      published: false
 
 sass:
   style: compressed

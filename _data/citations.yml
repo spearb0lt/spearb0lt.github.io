@@ -1,3 +1,7 @@
+# Google Scholar citation counts, read by _layouts/bib.liquid at build time and baked
+# into a static shields.io badge per publication. Key: <scholar_userid>:<google_scholar_id>.
+# Refresh with `python bin/update_citations_local.py` (or edit `citations:` by hand), then push.
+# Must stay valid YAML — do NOT paste prose here unless every line starts with '#'.
 metadata:
   last_updated: '2026-07-25'
 papers:
@@ -5,7 +9,6 @@ papers:
     citations: 3
     title: "Lung Cancer Identification from CT Scans using a Soft-attention enabled Deep Transfer Learning Model"
     year: '2025'
-
 
 
 #if not automatically done:
@@ -35,17 +38,17 @@ a) Edit the file directly — _data/citations.yml, change the one line:
 
 
 
-1. Adding more papers — where, and does the script handle it?
-a) _bibliography/papers.bib — add google_scholar_id={THE_ID} to that paper's entry. This is what makes the badge appear at all and links it to the right paper. (THE_ID is the citation_for_view=…:THE_ID suffix in the paper's Scholar URL.)
+# 1. Adding more papers — where, and does the script handle it?
+# a) _bibliography/papers.bib — add google_scholar_id={THE_ID} to that paper's entry. This is what makes the badge appear at all and links it to the right paper. (THE_ID is the citation_for_view=…:THE_ID suffix in the paper's Scholar URL.)
 
-b) bin/update_citations_local.py → MANUAL_PUBLICATIONS — add a line for it.
-Why (b)? The script has two modes:
+# b) bin/update_citations_local.py → MANUAL_PUBLICATIONS — add a line for it.
+# Why (b)? The script has two modes:
 
-Live scrape succeeds → it reads your entire profile and writes all papers automatically. In that case it handles everything, no manual list needed.
-Live scrape blocked (the normal case for you — Google 403s) → it falls back to MANUAL_PUBLICATIONS, and only writes what's listed there.
-So because your scrape is essentially always blocked, MANUAL_PUBLICATIONS is your real source of truth — treat it as the complete list of your papers. If you add a paper's google_scholar_id to the bib but forget to add it to MANUAL_PUBLICATIONS, its badge will read 0 (no matching row gets written on a blocked run).
+# Live scrape succeeds → it reads your entire profile and writes all papers automatically. In that case it handles everything, no manual list needed.
+# Live scrape blocked (the normal case for you — Google 403s) → it falls back to MANUAL_PUBLICATIONS, and only writes what's listed there.
+# So because your scrape is essentially always blocked, MANUAL_PUBLICATIONS is your real source of truth — treat it as the complete list of your papers. If you add a paper's google_scholar_id to the bib but forget to add it to MANUAL_PUBLICATIONS, its badge will read 0 (no matching row gets written on a blocked run).
 
-So the answer: the script handles everything automatically only on the rare occasions Google lets the scrape through; the rest of the time you add each new paper in both places. I'll make the push hook non-destructive so a blocked run never wipes anything.
+# So the answer: the script handles everything automatically only on the rare occasions Google lets the scrape through; the rest of the time you add each new paper in both places. I'll make the push hook non-destructive so a blocked run never wipes anything.
 
 
 

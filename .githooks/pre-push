@@ -16,6 +16,19 @@
 PY=python
 command -v "$PY" >/dev/null 2>&1 || PY=python3
 
+# Guard: never push an invalid _data/citations.yml. Broken YAML in a _data file makes
+# the Jekyll/GitHub Pages build fail, which silently keeps the OLD site deployed.
+if "$PY" -c "import yaml" >/dev/null 2>&1; then
+  if ! "$PY" -c "import yaml; yaml.safe_load(open('_data/citations.yml', encoding='utf-8'))" >/dev/null 2>&1; then
+    echo ""
+    echo "  ❌ _data/citations.yml is not valid YAML — push aborted."
+    echo "     It would fail the site build and leave the old page live."
+    echo "     Only YAML and '#'-comment lines are allowed. Fix it, then push again."
+    echo ""
+    exit 1
+  fi
+fi
+
 # Compare the file's content hash before/after so we react ONLY to a change the
 # scrape itself made — not to unrelated pre-existing edits to citations.yml.
 before=$(git hash-object _data/citations.yml 2>/dev/null || echo none)
