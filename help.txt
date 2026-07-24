@@ -92,3 +92,87 @@ There's no per-page CSS hook for the CV, and the plugin regenerates its own styl
 
 Maintenance caveat: if you ever upgrade al_folio_core and something looks off, re-sync that @use list at the top of assets/css/main.scss with the gem's main.scss (I left a comment there explaining this). All your custom tweaks are safely at the bottom.
 The <br> line breaks in the CV locations are kept (they give clean city/state/India lines); with the new CSS you could remove them and it'd still wrap, but keeping them is fine.
+
+
+
+
+
+
+----------------------------------------------------------
+for socials:
+1. Which accounts show — _data/socials.yml
+Remove an icon → delete or comment out its line (
+
+Add one → add a key the jekyll-socials plugin supports (e.g. twitter_username, medium_username, youtube_id, telegram_username, mastodon_username, etc.).
+Reorder → move the lines; render order follows file order.
+Change a link → edit its value.
+
+2. Whether the row appears at all — _pages/about.md:17
+
+social: true   # set to false to hide the whole social row on the home page
+
+Optional) Also in the navbar — _config.yml:470
+
+enable_navbar_social: false   # set true to also show social links in the navbar
+
+
+
+------------
+hide subpages 
+Why the subpages still open
+published: false only unpublishes the one file it's written in — your /blog/ landing page. It has no effect on the individual blog posts, because those live in a separate collection (_posts/). Each post is its own document that Jekyll renders independently at /blog/2015/formatting-and-links/ etc. Hiding the listing page doesn't hide its "children" — Jekyll has no parent→child relationship between blog.md and the posts.
+
+The same is true for the other hidden pages that are backed by collections:
+
+blog.md → _posts/ (30 posts) + jekyll-archives year/tag/category pages
+books.md → _books/ collection
+teaching.md → _teachings/ collection
+(reads.md, dropdown.md, plugins.md, profiles.md are standalone pages with no subpages, so those are already fully hidden.)
+
+Cmd-K palette is built from content at build time, gated by _config.yml:89 posts_in_search: true. As long as the posts are generated, they get indexed regardless of the blog landing page.
+
+Two levers: (1) turn off posts-in-search, and (2) unpublish the whole collection via _config.yml defaults — instead of hand-editing 30+ post files. Unpublished documents drop out of site.posts, so the pages stop generating and they leave the search index (empty collections also produce no archive pages). It mirrors exactly what you did on the parent, and reverts the same way.
+
+config.yml 299:318
+
+ Changes in _config.yml:
+
+_config.yml:89 — posts_in_search: false, removing blog posts from the Ctrl+K palette.
+_config.yml:294 — added published: false defaults for the posts, books, and teachings collections, so their subpages stop generating entirely (which also removes them from search).
+
+
+Set that section's listing page (blog.md / books.md / teaching.md) to published: true
+ delete the matching scope block in the defaults, and for blog also flip posts_in_search back to true.
+
+
+matching scope:
+_config.yml. In YAML, defaults: is a list, and each - scope: … values: … entry is one item in that list — that's a "scope block." Here's what's there now:
+
+Each collection now has its own clearly-labeled block in _config.yml, and the rule is simple:
+
+Block uncommented → section hidden (current state for all three).
+To bring a section back → comment out its 4 lines (put # in front of each), then set that listing page to published: true.
+For example, to un-hide the blog, you'd turn:
+
+
+  # --- BLOG (posts) : HIDDEN ---
+  - scope:
+      path: ""
+      type: posts
+    values:
+      published: false
+into:
+
+
+  # --- BLOG (posts) : HIDDEN ---
+  # - scope:
+  #     path: ""
+  #     type: posts
+  #   values:
+  #     published: false
+...and set published: true in blog.md plus flip posts_in_search back to true.
+
+Two notes:
+
+Restart the build/server after editing — _config.yml isn't hot-reloaded.
+A genuinely one-character alternative exists too: instead of commenting, just change that block's published: false → published: true. It has the same effect (true is the normal default) without touching all 4 lines. I went with the comment-toggle you asked for, but say the word if you'd prefer the false/true flip instead.
