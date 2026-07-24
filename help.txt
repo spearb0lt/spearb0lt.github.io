@@ -82,3 +82,13 @@ On a project's card thumbnail (the img: field): because the card goes through fi
 
 Recommended: keep the card as a normal image, and show the GIF/video in the project's body with the <img>/video.liquid snippets above (that's what sites like mayankm96's do — the animation lives in the project page, not always the tiny card).
 Site-wide: remove ".gif" from imagemagick.input_formats in _config.yml so GIFs are never converted; then a GIF used via figure.liquid/img: will animate (you lose webp optimization for GIFs only).
+
+
+
+
+CHANGES IN CV part mainly around allignment
+
+There's no per-page CSS hook for the CV, and the plugin regenerates its own stylesheet on every build (so overriding that isn't reliable). The reliable, contract-safe place is a local assets/css/main.scss — it overrides the theme's main stylesheet (loads on every page, isn't regenerated). It re-imports all the theme's styles (@use block) and adds my tweaks in a clearly marked "Custom overrides" section at the bottom.
+
+Maintenance caveat: if you ever upgrade al_folio_core and something looks off, re-sync that @use list at the top of assets/css/main.scss with the gem's main.scss (I left a comment there explaining this). All your custom tweaks are safely at the bottom.
+The <br> line breaks in the CV locations are kept (they give clean city/state/India lines); with the new CSS you could remove them and it'd still wrap, but keeping them is fine.
