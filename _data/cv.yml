@@ -3,7 +3,7 @@ cv:
   label: AI/ML Researcher
   email: shubhro2004@gmail.com
   phone: +91 8272979689
-  location: Kolkata, India
+  location: Kolkata, West Bengal, India
   image: ""
   summary: >
     AI/ML researcher and Computer Science undergraduate at RGIPT working on large language models,
@@ -19,9 +19,9 @@ cv:
   sections:
     Education:
       - institution: Rajiv Gandhi Institute of Petroleum Technology (RGIPT)
-        location: Jais, Uttar Pradesh
+        location: "Jais,<br>Uttar Pradesh,<br>India"
         url: https://www.rgipt.ac.in/
-        area: Computer Science and Engineering
+        area: 'Computer Science and Engineering <span class="edu-score">CPI 7.82</span>'
         studyType: Bachelor of Technology
         start_date: 2022
         end_date: 2026
@@ -30,16 +30,16 @@ cv:
           - An Institute of National Importance, established along the lines of the IITs.
 
       - institution: Bharatiya Vidya Bhavans, Kolkata
-        location: Kolkata, India
-        area: Class 12th (CBSE Board)
+        location: "Kolkata,<br>West Bengal,<br>India"
+        area: 'Class 12th (CBSE Board) <span class="edu-score">90.60%</span>'
         studyType: Higher Secondary
         start_date: 2020
         end_date: 2022
         score: "90.60%"
 
       - institution: Julien Day School, Elgin Road, Kolkata
-        location: Kolkata, India
-        area: Class 10th (ICSE Board)
+        location: "Kolkata,<br>West Bengal,<br>India"
+        area: 'Class 10th (ICSE Board) <span class="edu-score">94.60%</span>'
         studyType: Senior Secondary
         start_date: 2018
         end_date: 2020
@@ -48,7 +48,7 @@ cv:
     Experience:
       - company: Siemens
         position: Technical Research Intern, Global DAI R (SDE-IN Team)
-        location: India
+        location: "Bengaluru,<br>Karnataka,<br>India"
         start_date: 2026-01-01
         end_date: 2026-06-01
         highlights:
@@ -58,7 +58,7 @@ cv:
 
       - company: VANET Lab, IIT Jodhpur
         position: "Research Assistant (Supervisor: Dr. Debasis Das)"
-        location: Jodhpur, India
+        location: "Jodhpur,<br>Rajasthan,<br>India"
         start_date: 2025-02-01
         end_date: 2025-08-01
         highlights:
@@ -68,7 +68,7 @@ cv:
 
       - company: Core-AI Solutions
         position: Data Science Intern
-        location: Remote
+        location: "Remote<br>San Jose, USA"
         start_date: 2025-01-01
         end_date: 2025-05-01
         highlights:
@@ -78,7 +78,7 @@ cv:
 
       - company: Adani Power
         position: Machine Learning Intern
-        location: On-site
+        location: "Dahanu,<br>Maharashtra,<br>India"
         start_date: 2024-11-01
         end_date: 2025-01-01
         highlights:
@@ -88,7 +88,7 @@ cv:
 
       - company: VCA Lab, IIT (BHU) Varanasi
         position: "Research Intern (Supervisor: Dr. Sanjay Kumar Singh)"
-        location: Varanasi, India
+        location: "Varanasi,<br>Uttar Pradesh,<br>India"
         start_date: 2024-06-01
         end_date: 2024-10-01
         highlights:
@@ -97,7 +97,7 @@ cv:
 
       - company: CMATER Lab, Jadavpur University
         position: "Research Intern (Supervisor: Dr. Ram Sarkar)"
-        location: Kolkata, India
+        location: "Kolkata,<br>West Bengal,<br>India"
         start_date: 2024-05-01
         end_date: 2024-08-01
         highlights:
@@ -106,6 +106,26 @@ cv:
           - Proposed a novel transfer-learning and attention-based architecture to detect and classify lung cancer from CT scans and histopathological images.
 
     Publications:
+      
+      - title: A Multiview Multiobjective Clustering Approach to Unsupervised Extractive Summarization
+        authors:
+          - Shubhro Dev
+          - J. Konwar
+          - M. Aggarwal
+          - S. Mishra
+        publisher: Target venue AACL 2026
+        releaseDate: 2026
+        summary: Manuscript in preparation.
+        
+      - title: A Differentially Private Hybrid Transformer-Mamba Architecture for Industrial Predictive Maintenance on Multivariate Time Series Data
+        authors:
+          - Shubhro Dev
+          - A. Ghosh
+          - Debasis Das
+        publisher: IEEE Transactions on Intelligent Transportation Systems
+        releaseDate: 2025
+        summary: In submission.
+
       - title: Lung Cancer Identification from CT Scans using a Soft-attention enabled Deep Transfer Learning Model
         authors:
           - Shubhro Dev
@@ -116,54 +136,86 @@ cv:
         releaseDate: 2025
         summary: "Published at IEEE ISACC 2025 (pp. 254-259). DOI: 10.1109/ISACC65211.2025.10969319."
 
-      - title: A Differentially Private Hybrid Transformer-Mamba Architecture for Industrial Predictive Maintenance on Multivariate Time Series Data
-        authors:
-          - Shubhro Dev
-          - A. Ghosh
-          - Debasis Das
-        publisher: IEEE Transactions on Intelligent Transportation Systems
-        releaseDate: 2025
-        summary: In submission.
-
-      - title: A Multiview Multiobjective Clustering Approach to Unsupervised Extractive Summarization
-        authors:
-          - Shubhro Dev
-          - J. Konwar
-          - M. Aggarwal
-          - S. Mishra
-        publisher: Target venue AACL 2026
-        releaseDate: 2026
-        summary: Manuscript in preparation.
 
     Projects:
       - name: Cross-Industry Privacy-Preserving Framework for Predictive Maintenance (IDA 2024 Challenge)
         summary: >
-          A federated, differentially private framework for RUL prediction on the SCANIA-X dataset. Combines numerical
-          and categorical features into transformer embeddings with a TabTransformer, applies Spectral-DP and DP-SGD,
-          and aggregates a global model across heterogeneous clients with the flwr library.
+          A federated, differentially private framework for RUL prediction on the SCANIA-X dataset. Combines numerical 
+          and categorical features into transformer embeddings with a TabTransformer, applies Spectral-DP and DP-SGD, and 
+          aggregates a global model across heterogeneous clients with the flwr library.
         highlights:
-          - Best RUL prediction model on the dataset with an MSE of 2725 while preserving training-data privacy.
-          - Built an advanced membership inference attack (white-box, gray-box, black-box plus time-series features) achieving 49.12% AUC and 49.59% accuracy, confirming strong privacy.
+          - Implemented differential privacy from scratch (Spectral-DP and DP-SGD, including a Renyi DP / Moments accountant) to protect training data, with a two-stage model pairing a Transformer time-series encoder and a TabTransformer head.
+          - Infused federated training via the flwr library, aggregating a global model across heterogeneous clients with different computing power, parameters, and hyperparameters to mirror real-life industrial equipment.
+          - Best RUL prediction model on the dataset with an MSE of 2725 while preserving training-data privacy, achieving 49.12% AUC and 49.59% accuracy in an advanced membership inference attack.
+          # - Built an advanced membership inference attack (white-box, gray-box, black-box plus time-series seasonality/trend features) achieving 49.12% AUC and 49.59% accuracy, confirming strong privacy.
         start_date: 2025-02-01
         end_date: 2025-08-01
 
-      - name: SENTRAL - Multi Spectrum Stock Analysis using custom LLMs
-        summary: >
-          A multi-spectrum stock analysis system combining fundamental analysis (14 metrics plus Piotroski F-Score and
-          Altman Z-Score), technical analysis (18 indicators), news sentiment from 10 LLMs, and Transformer/LSTM
-          forecasting to compute buy/hold/sell probabilities.
-        highlights:
-          - Collected news via seven APIs plus web scraping and filtered items by relevance before LLM sentiment extraction.
-          - Ensembled sentiment with fundamental and technical indicators, boosting a newbie portfolio by +45% over five months.
-
       - name: Context-Aware Multimodal Knowledge Retrieval System
         summary: >
-          A retrieval system that parses and separately processes multimodal content (images, tables, equations, graphs,
-          text), summarises each modality into embeddings stored in ChromaDB, and answers queries with source-cited,
-          multimodal responses.
+          A context-aware parser that automatically extracts and separately processes multimodal content (images, tables,
+          equations, graphs, text) and summarises each modality into vector embeddings, then answers queries with
+          comprehensive, source-cited responses referencing text, table data and image insights.
         highlights:
-          - Employed modality-specific pipelines with the most appropriate LLM per content type.
-          - Designed a multi-vector retrieval strategy linking summaries to original content for context preservation.
+          - Employed modality-specific pipelines and selected the appropriate LLM per content type to improve summary quality, storing embeddings and summaries in ChromaDB using Hugging Face embeddings.
+          - Runs three parallel retrieval pipelines (LLM-summary embeddings, raw-atomic content, and CLIP text-to-image search), parsing documents with Docling.
+          - Designed a multi-vector retrieval strategy linking document summaries to original content, so queries retrieve the relevant multimodal content for context preservation.
+
+      - name: SENTRAL - Multi Spectrum Stock Analysis using custom LLMs
+        summary: >
+          A multi-spectrum stock analysis system combining fundamental analysis (14 metrics such as P/E, P/B, Debt
+          plus Piotroski F-Score and Altman Z-Score with sector peer comparisons), technical analysis
+          (18 indicators such as EMA20/50), multi-LLM news sentiment, and Transformer/LSTM
+          forecasting to compute buy/hold/sell probabilities.
+        highlights:
+          - Collected news via seven APIs plus web scraping, filtered items by relevance score, then fed the curated corpus to 10 LLMs (finance-tuned and SOTA reasoning models) for sentiment extraction and signal generation.
+          - Applied Transformer and LSTM models to forecast price trends and ensembled sentiment with fundamental and technical indicators, boosting a newbie portfolio by +45% over five months.
+          # - Packaged as two production-ready Streamlit apps (a deep single-stock analyzer and a screener.in-style screener) with a 20-strategy backtesting engine, Monte Carlo simulation, and report generation.
+
+     
+
+
+
+# Cross-Industry Privacy-Preserving Framework for Predictive Maintenance (IDA 2024 Challenge)
+# A federated, differentially private framework for RUL prediction on the SCANIA-X dataset. Combines numerical and categorical features into transformer embeddings with a TabTransformer, applies Spectral-DP and DP-SGD, and aggregates a global model across heterogeneous clients with the flwr library.
+
+# Best RUL prediction model on the dataset with an MSE of 2725 while preserving training-data privacy.
+# Built an advanced membership inference attack (white-box, gray-box, black-box plus time-series features) achieving 49.12% AUC and 49.59% accuracy, confirming strong privacy.
+
+# SENTRAL - Multi Spectrum Stock Analysis using custom LLMs
+# A multi-spectrum stock analysis system combining fundamental analysis (14 metrics plus Piotroski F-Score and Altman Z-Score), technical analysis (18 indicators), news sentiment from 10 LLMs, and Transformer/LSTM forecasting to compute buy/hold/sell probabilities.
+
+# Collected news via seven APIs plus web scraping and filtered items by relevance before LLM sentiment extraction.
+# Ensembled sentiment with fundamental and technical indicators, boosting a newbie portfolio by +45% over five months.
+
+# Context-Aware Multimodal Knowledge Retrieval System
+# A retrieval system that parses and separately processes multimodal content (images, tables, equations, graphs, text), summarises each modality into embeddings stored in ChromaDB, and answers queries with source-cited, multimodal responses.
+
+# Employed modality-specific pipelines with the most appropriate LLM per content type.
+# Designed a multi-vector retrieval strategy linking summaries to original content for context preservation.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     Awards:
       - title: Global Rank 10, Meta Hacker Cup 2025 (AI Track)
@@ -261,4 +313,4 @@ cv:
 
       - name: Beyond Work
         icon: fa-solid fa-chess-knight
-        keywords: "Chess, Competitive Programming, Gaming"
+        keywords: "Chess, Building Tools, Gaming"

@@ -237,6 +237,7 @@ exclude:
   - serve.ps1
   - purgecss.config.js
   - README.md
+  - UPGRADING.md
   - readme_preview/
   - gems/
   - migrations/

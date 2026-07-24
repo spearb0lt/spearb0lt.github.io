@@ -1,0 +1,76 @@
+---
+# Local override of the theme's main.scss. The @use block below mirrors al_folio_core's
+# main.scss so all theme styles still load; custom tweaks live in the section at the bottom.
+# If you ever bump al_folio_core and styles look off, re-sync this @use list with the gem.
+---
+@charset "utf-8";
+
+@use "sass:math";
+@use "sass:string";
+
+@use "variables" with (
+  $max-content-width: {{ site.max_width | default:  "930px" }}
+);
+
+@use "themes";
+@use "layout";
+
+@use "typography";
+@use "navbar";
+@use "footer";
+@use "blog";
+@use "publications";
+@use "components";
+@use "utilities";
+
+@use "tabs";
+@use "teachings";
+@use "typograms";
+
+/* ======================================================================
+   Custom overrides
+   ====================================================================== */
+
+/* About page: center the contact info (city / email / phone) under the photo,
+   so it lines up nicely with the circular profile image. */
+.profile .more-info { text-align: center; }
+
+/* CV: center the date badge and the location. Lines break ONLY where a <br> is
+   written in _data/cv.yml (no automatic wrapping). */
+.cv .date-column table.table-cv { margin-left: auto; margin-right: auto; }
+.cv .date-column td { text-align: center; }
+.cv p.location {
+  text-align: center;           /* all location lines centered */
+  white-space: nowrap;          /* break only at <br> */
+  line-height: 1.4;
+  margin: 0.2rem 0 0;
+}
+
+/* CV: remove the default list bullet next to each entry title in these sections.
+   (The section id sits on an empty anchor right before the card, hence `+ .card`.) */
+#experience + .card li.list-group-item,
+#education + .card li.list-group-item,
+#publications + .card li.list-group-item,
+#awards + .card li.list-group-item {
+  list-style: none;
+}
+
+/* CV Projects: keep the bullet AND add a divider line after each project. */
+#projects + .card li.list-group-item {
+  border-bottom: 1px solid var(--global-divider-color);
+  padding-bottom: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+#projects + .card li.list-group-item:last-child {
+  border-bottom: none;
+}
+
+/* CV Education: show the CGPA / percentage on the right of the entry. */
+.cv .edu-score {
+  float: right;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--global-theme-color);
+  font-size: 0.9rem;
+  margin-left: 0.75rem;
+}

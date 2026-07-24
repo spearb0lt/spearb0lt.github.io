@@ -40,7 +40,7 @@ I love to watch movies and shows for entertainment and sometimes in free time bi
   {% include figure.liquid path="assets/img/hobbies/badminton.png" class="img-fluid rounded z-depth-1" alt="Badminton and shuttlecock" %}
 </div>
 
-I love playing outdoor games and hit the gym to remain fit and healthy. My favourite sports are badminton, football and cricket. I also love swimming and playing pool. 
+I enjoy playing outdoor sports and going to the gym to stay fit and healthy. My favourite sports are badminton, football and cricket. I also enjoy swimming and playing pool. 
 
 
 
@@ -51,11 +51,11 @@ I love playing outdoor games and hit the gym to remain fit and healthy. My favou
 </div>
 When I want something more relaxed, I game. My current go-to is **Clash Royale**.
 
-- **Clash Royale:** Shubhro (player tag `#8JPJYC8U0`), [profile on RoyaleAPI](https://royaleapi.com/player/8JPJYC8U0). Friend me on [Supercell-ID](https://link.clashroyale.com/?supercell_id&p=50-075b9a3b-9034-4c2d-97f4-70d9b81f1ce3)
+- **Clash Royale:** Shubhro (player tag `#8JPJYC8U0`), [profile on RoyaleAPI](https://royaleapi.com/player/8JPJYC8U0). Friend me on [Supercell-ID](https://link.clashroyale.com/?supercell_id&p=50-075b9a3b-9034-4c2d-97f4-70d9b81f1ce3).
 
 
 ## Building
 <div style="max-width: 360px; margin: 1rem auto;">
-  <img src="/assets/img/tools.gif" class="img-fluid rounded z-depth-1" alt="spiral animation" loading="eager">
+  <img src="/assets/img/tools1.gif" class="img-fluid rounded z-depth-1" alt="beavis using computer" loading="eager">
 </div>
-Sometimes I find myself building solutions to some real life problems which people or I face. I like to build [software tools](/projects/#useful-tools) as well as do some redneck engineering.
+I enjoy building solutions to some real world problems that I or others encounter. When I need a software tool and can't find the right one, I usually [build it myself](/projects/#useful-tools). I also enjoy a bit of redneck engineering.
