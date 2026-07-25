@@ -226,3 +226,18 @@ Open http://localhost:8080/
 Docker vs. local Ruby — quick take
 Docker: zero Ruby/gem setup, config auto-restart, isolated. Downside: heavier (Docker Desktop), port 8080, no local _site, slightly slower file-watching (uses --force_polling).
 Local Ruby: faster, native _site output, but you must install Ruby 3.3.5 + DevKit and restart manually on config changes
+
+-------------------------------------
+Your icon: ⚛️ setting (_config.yml:18) tells al-folio to render the emoji into a tiny PNG and embed it inline as a data: URI — the image lives inside the HTML, not as a separate file with its own URL.
+
+Browsers happily render data-URI favicons → that's exactly why you see the atom ⚛️ at the top of the tab once the page is open (your second screenshot).
+Google Search and other external surfaces do NOT use data-URI favicons. Google's favicon requirement is that the icon be a real file at a crawlable URL — Googlebot fetches the href as a URL. A data:... blob is not a fetchable URL, so there's nothing for it to crawl, and it falls back to the generic globe (your first screenshot).
+Replace the emoji with a real image file. Your config comment even documents this: "alternatively, provide image name in /assets/img/."
+
+Steps:
+
+Create a proper favicon image — a square PNG, ideally a multiple of 48px (e.g. 96×96 or 256×256). Easiest: go to favicon.io/emoji-favicons and grab the ⚛️ atom — you get a PNG that looks identical to your current tab icon.
+Drop it in assets/img/ (e.g. assets/img/favicon.png).
+Change icon: ⚛️ → icon: favicon.png in _config.yml.
+Verify after building — view page source and confirm the tag is now <link rel="icon" href="/assets/img/favicon.png"> (a real URL), not data:....
+In Google Search Console, request a re-crawl of your homepage. Google updates search favicons on its own schedule, so expect days to a few weeks — and note favicons mainly appear in mobile results.
