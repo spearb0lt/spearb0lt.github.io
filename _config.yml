@@ -15,7 +15,7 @@ footer_text: >
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
 keywords: Shubhro Dev, Shubhro Dev portfolio, Shubhro Dev RGIPT, Shubhro Dev CV, Shubhro Dev Siemens, Shubhro Dev Resume, AI, machine learning, deep learning, LLM, NLP, computer vision, federated learning, privacy preserving, PdM, predictive maintenance, time-series, RGIPT # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: ⚛️ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+icon: transparent-pumpkin-512x512.png # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://spearb0lt.github.io # the base hostname & protocol for your site
 baseurl: "" # the subpath of your site, e.g. /blog/. Leave blank for root
