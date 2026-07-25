@@ -1,56 +1,7 @@
-# Google Scholar citation counts, read by _layouts/bib.liquid at build time and baked
-# into a static shields.io badge per publication. Key: <scholar_userid>:<google_scholar_id>.
-# Refresh with `python bin/update_citations_local.py` (or edit `citations:` by hand), then push.
-# Must stay valid YAML — do NOT paste prose here unless every line starts with '#'.
 metadata:
   last_updated: '2026-07-25'
 papers:
   rNBVr8gAAAAJ:u5HHmVD_uO8C:
     citations: 3
-    title: "Lung Cancer Identification from CT Scans using a Soft-attention enabled Deep Transfer Learning Model"
-    year: '2025'
-
-
-#if not automatically done:
-# Path 1 — try the local scrape (works when Google isn't blocking your IP)
-# python bin/update_citations_local.py
-#  writes real numbers into _data/citations.yml automatically.
-# If Google 403s you (what happened in our test), it automatically falls back to the manual numbers and still writes a valid file — you'll see Scholar scrape failed … Falling back to MANUAL_PUBLICATIONS. That's not an error; the file is still correct, just using your hand-entered value.
-a) Edit the file directly — _data/citations.yml, change the one line:
-    # citations: 3      # ← put the real 
-
-# b) Or edit the script's fallback so future runs default to the right number — in bin/update_citations_local.py:
-# MANUAL_PUBLICATIONS = {
-#     "u5HHmVD_uO8C": (3, "Lung Cancer Identification …", "2025"),
-#     #                 ↑ change this
-# }
-
-# then run python bin/update_citations_local.py --manual to write it.
-
-# Then publish (required — this is the step that actually updates the site)
-# The number is baked in at build time, so editing the file changes nothing live until you commit and let GitHub Pages rebuild:
-
-
-# git add _data/citations.yml
-# git commit -m "Update Google Scholar citations"
-# git push
-
-
-
-
-# 1. Adding more papers — where, and does the script handle it?
-# a) _bibliography/papers.bib — add google_scholar_id={THE_ID} to that paper's entry. This is what makes the badge appear at all and links it to the right paper. (THE_ID is the citation_for_view=…:THE_ID suffix in the paper's Scholar URL.)
-
-# b) bin/update_citations_local.py → MANUAL_PUBLICATIONS — add a line for it.
-# Why (b)? The script has two modes:
-
-# Live scrape succeeds → it reads your entire profile and writes all papers automatically. In that case it handles everything, no manual list needed.
-# Live scrape blocked (the normal case for you — Google 403s) → it falls back to MANUAL_PUBLICATIONS, and only writes what's listed there.
-# So because your scrape is essentially always blocked, MANUAL_PUBLICATIONS is your real source of truth — treat it as the complete list of your papers. If you add a paper's google_scholar_id to the bib but forget to add it to MANUAL_PUBLICATIONS, its badge will read 0 (no matching row gets written on a blocked run).
-
-# So the answer: the script handles everything automatically only on the rare occasions Google lets the scrape through; the rest of the time you add each new paper in both places. I'll make the push hook non-destructive so a blocked run never wipes anything.
-
-
-
-
-
+    title: "Lung cancer identification from CT scans using a soft-attention enabled deep transfer learning model"
+    year: 'Unknown Year'
