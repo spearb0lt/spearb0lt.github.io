@@ -40,6 +40,13 @@ Backlinks (huge for a personal name): put your portfolio URL in your LinkedIn (C
 Optional: Bing Webmaster Tools (same idea, bing_site_verification), and Google Analytics (analytics.google) if you want visitor stats (not ranking, just tracking).
 
 
+The keywords: meta tag does nothing for ranking. Your config does emit <meta name="keywords"> from _config.yml:16, 
+
+
+
+
+
+--------------------------
 How to run the site locally, anytime
 You don't have Ruby installed, so the reliable way is Docker (what we've been using):
 
@@ -176,3 +183,46 @@ Two notes:
 
 Restart the build/server after editing — _config.yml isn't hot-reloaded.
 A genuinely one-character alternative exists too: instead of commenting, just change that block's published: false → published: true. It has the same effect (true is the normal default) without touching all 4 lines. I went with the comment-toggle you asked for, but say the word if you'd prefer the false/true flip instead.
+
+-------------------------
+1. Install Ruby (the only hard requirement)
+Match CI's version: Ruby 3.3.5.
+
+Windows: download RubyInstaller → pick Ruby+Devkit 3.3.x (x64). At the end of the installer it runs ridk install — accept it and choose option 3 (MSYS2 + MINGW), which is needed to compile native gems.
+Verify in a fresh terminal:
+
+ruby -v      # should show 3.3.x
+gem -v
+2. Clone the repo
+
+git clone https://github.com/spearb0lt/spearb0lt.github.io.git
+cd spearb0lt.github.io
+3. Install the gems
+
+gem install bundler
+bundle install
+4. Serve it
+
+bundle exec jekyll serve
+
+
+Install Docker Desktop — https://www.docker.com/products/docker-desktop (Windows/macOS). Start it and make sure it's running.
+Clone and enter the repo:
+
+git clone https://github.com/spearb0lt/spearb0lt.github.io.git
+cd spearb0lt.github.io
+Bring it up:
+
+docker compose up -d
+
+Useful commands
+
+docker compose logs -f      # watch the build log / spot Jekyll errors
+docker compose restart      # restart if something gets stuck
+docker compose down         # stop and remove the container when done
+Open http://localhost:8080/ 
+
+
+Docker vs. local Ruby — quick take
+Docker: zero Ruby/gem setup, config auto-restart, isolated. Downside: heavier (Docker Desktop), port 8080, no local _site, slightly slower file-watching (uses --force_polling).
+Local Ruby: faster, native _site output, but you must install Ruby 3.3.5 + DevKit and restart manually on config changes

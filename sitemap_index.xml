@@ -1,0 +1,12 @@
+---
+permalink: /sitemap_index.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>{{ site.baseurl | prepend: site.url }}/sitemap.xml</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://spearb0lt.github.io/acad-homepage/sitemap.xml</loc>
+  </sitemap>
+</sitemapindex>
