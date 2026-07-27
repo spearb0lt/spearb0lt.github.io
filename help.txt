@@ -257,3 +257,13 @@ python bin/update_citations_local.py --manual    # skip scraping, use MANUAL_PUB
 python bin/update_citations_local.py --if-scraped  # only write if a live scrape worked
 If Scholar is 403-ing you and the count is stale, edit MANUAL_PUBLICATIONS at bin/update_citations_local.py:51-58 with the real number, run with --manual, then commit and push.
 Two things worth knowing for later: on a fresh clone the hook is dormant until you re-run git config core.hooksPath .githooks
+
+
+
+
+-----------------------
+stable version
+git revert a58084f4b50b6c13c63f4b697c4730552c826ce5
+git push
+
+a58084f4b50b6c13c63f4b697c4730552c826ce5
