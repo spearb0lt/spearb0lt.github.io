@@ -241,3 +241,19 @@ Drop it in assets/img/ (e.g. assets/img/favicon.png).
 Change icon: ⚛️ → icon: favicon.png in _config.yml.
 Verify after building — view page source and confirm the tag is now <link rel="icon" href="/assets/img/favicon.png"> (a real URL), not data:....
 In Google Search Console, request a re-crawl of your homepage. Google updates search favicons on its own schedule, so expect days to a few weeks — and note favicons mainly appear in mobile results.
+-------------------------------------
+for citation update:
+You already have a pre-push hook wired up (core.hooksPath = .githooks). On git push it runs the scraper in --if-scraped mode:
+
+Scrape succeeds and numbers changed → it commits _data/citations.yml and stops that push with a message; you just run git push again and both go up. That's what produced your "Auto-update Google Scholar citations" commits.
+Scrape blocked or numbers unchanged → no-op, push proceeds. A blocked scrape can never wipe your data.
+It also validates the YAML first and aborts the push if it's malformed, since a broken _data file would fail the build and silently leave the old site live.
+
+When you want to force it by hand:
+
+
+python bin/update_citations_local.py             # scrape; fall back to manual values
+python bin/update_citations_local.py --manual    # skip scraping, use MANUAL_PUBLICATIONS
+python bin/update_citations_local.py --if-scraped  # only write if a live scrape worked
+If Scholar is 403-ing you and the count is stale, edit MANUAL_PUBLICATIONS at bin/update_citations_local.py:51-58 with the real number, run with --manual, then commit and push.
+Two things worth knowing for later: on a fresh clone the hook is dormant until you re-run git config core.hooksPath .githooks
