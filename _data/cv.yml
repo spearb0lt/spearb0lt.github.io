@@ -18,7 +18,7 @@ cv:
 
   sections:
     Education:
-      - institution: Rajiv Gandhi Institute of Petroleum Technology (RGIPT)
+      - institution: 'Rajiv Gandhi Institute of Petroleum Technology (RGIPT)<br><span class="edu-note">(An Institute of National Importance along the lines of the <b>IITs</b>)</span>'
         location: "Jais,<br>Uttar Pradesh,<br>India"
         url: https://www.rgipt.ac.in/
         area: 'Computer Science and Engineering <span class="edu-score">CPI 7.82</span>'
@@ -26,11 +26,14 @@ cv:
         start_date: 2022
         end_date: 2026
         score: "CPI 7.82 (up to 7th semester)"
-        highlights:
-          - An Institute of National Importance, established along the lines of the IITs.
+        # The "Institute of National Importance" note now sits under the institution
+        # name (see .edu-note in assets/css/main.scss) instead of as a bullet below.
+        # highlights:
+        #   - An Institute of National Importance, established along the lines of the IITs.
 
       - institution: Bharatiya Vidya Bhavans, Kolkata
         location: "Kolkata,<br>West Bengal,<br>India"
+        url: https://bhavansgkvidyamandir.edu.in/
         area: 'Class 12th (CBSE Board) <span class="edu-score">90.60%</span>'
         studyType: Higher Secondary
         start_date: 2020
@@ -39,6 +42,7 @@ cv:
 
       - institution: Julien Day School, Elgin Road, Kolkata
         location: "Kolkata,<br>West Bengal,<br>India"
+        url: https://www.juliendayschool.org/kolkata
         area: 'Class 10th (ICSE Board) <span class="edu-score">94.60%</span>'
         studyType: Senior Secondary
         start_date: 2018

@@ -239,6 +239,7 @@ exclude:
   - README.md
   - UPGRADING.md
   - readme_preview/
+  - test/ # integration/visual test scripts; not site content
   - gems/
   - migrations/
   - vendor
