@@ -1,9 +1,5 @@
 {
   "permissions": {
-    "allow": [
-      "Bash(docker compose *)",
-      "Bash(echo \"exit: $?\")",
-      "Bash(python -c ' *)"
-    ]
+    "allow": ["Bash(docker compose *)", "Bash(echo \"exit: $?\")", "Bash(python -c ' *)"]
   }
 }

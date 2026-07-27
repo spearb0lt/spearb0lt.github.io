@@ -106,7 +106,6 @@ cv:
           - Proposed a novel transfer-learning and attention-based architecture to detect and classify lung cancer from CT scans and histopathological images.
 
     Publications:
-      
       - title: A Multiview Multiobjective Clustering Approach to Unsupervised Extractive Summarization
         authors:
           - Shubhro Dev
@@ -116,7 +115,7 @@ cv:
         publisher: Target venue AACL 2026
         releaseDate: 2026
         summary: Manuscript in preparation.
-        
+
       - title: A Differentially Private Hybrid Transformer-Mamba Architecture for Industrial Predictive Maintenance on Multivariate Time Series Data
         authors:
           - Shubhro Dev
@@ -135,7 +134,6 @@ cv:
         publisher: IEEE ISACC 2025
         releaseDate: 2025
         summary: "Published at IEEE ISACC 2025 (pp. 254-259). DOI: 10.1109/ISACC65211.2025.10969319."
-
 
     Projects:
       - name: Cross-Industry Privacy-Preserving Framework for Predictive Maintenance (IDA 2024 Challenge)
@@ -172,50 +170,23 @@ cv:
           - Applied Transformer and LSTM models to forecast price trends and ensembled sentiment with fundamental and technical indicators, boosting a newbie portfolio by +45% over five months.
           # - Packaged as two production-ready Streamlit apps (a deep single-stock analyzer and a screener.in-style screener) with a 20-strategy backtesting engine, Monte Carlo simulation, and report generation.
 
-     
+    # Cross-Industry Privacy-Preserving Framework for Predictive Maintenance (IDA 2024 Challenge)
+    # A federated, differentially private framework for RUL prediction on the SCANIA-X dataset. Combines numerical and categorical features into transformer embeddings with a TabTransformer, applies Spectral-DP and DP-SGD, and aggregates a global model across heterogeneous clients with the flwr library.
 
+    # Best RUL prediction model on the dataset with an MSE of 2725 while preserving training-data privacy.
+    # Built an advanced membership inference attack (white-box, gray-box, black-box plus time-series features) achieving 49.12% AUC and 49.59% accuracy, confirming strong privacy.
 
+    # SENTRAL - Multi Spectrum Stock Analysis using custom LLMs
+    # A multi-spectrum stock analysis system combining fundamental analysis (14 metrics plus Piotroski F-Score and Altman Z-Score), technical analysis (18 indicators), news sentiment from 10 LLMs, and Transformer/LSTM forecasting to compute buy/hold/sell probabilities.
 
-# Cross-Industry Privacy-Preserving Framework for Predictive Maintenance (IDA 2024 Challenge)
-# A federated, differentially private framework for RUL prediction on the SCANIA-X dataset. Combines numerical and categorical features into transformer embeddings with a TabTransformer, applies Spectral-DP and DP-SGD, and aggregates a global model across heterogeneous clients with the flwr library.
+    # Collected news via seven APIs plus web scraping and filtered items by relevance before LLM sentiment extraction.
+    # Ensembled sentiment with fundamental and technical indicators, boosting a newbie portfolio by +45% over five months.
 
-# Best RUL prediction model on the dataset with an MSE of 2725 while preserving training-data privacy.
-# Built an advanced membership inference attack (white-box, gray-box, black-box plus time-series features) achieving 49.12% AUC and 49.59% accuracy, confirming strong privacy.
+    # Context-Aware Multimodal Knowledge Retrieval System
+    # A retrieval system that parses and separately processes multimodal content (images, tables, equations, graphs, text), summarises each modality into embeddings stored in ChromaDB, and answers queries with source-cited, multimodal responses.
 
-# SENTRAL - Multi Spectrum Stock Analysis using custom LLMs
-# A multi-spectrum stock analysis system combining fundamental analysis (14 metrics plus Piotroski F-Score and Altman Z-Score), technical analysis (18 indicators), news sentiment from 10 LLMs, and Transformer/LSTM forecasting to compute buy/hold/sell probabilities.
-
-# Collected news via seven APIs plus web scraping and filtered items by relevance before LLM sentiment extraction.
-# Ensembled sentiment with fundamental and technical indicators, boosting a newbie portfolio by +45% over five months.
-
-# Context-Aware Multimodal Knowledge Retrieval System
-# A retrieval system that parses and separately processes multimodal content (images, tables, equations, graphs, text), summarises each modality into embeddings stored in ChromaDB, and answers queries with source-cited, multimodal responses.
-
-# Employed modality-specific pipelines with the most appropriate LLM per content type.
-# Designed a multi-vector retrieval strategy linking summaries to original content for context preservation.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    # Employed modality-specific pipelines with the most appropriate LLM per content type.
+    # Designed a multi-vector retrieval strategy linking summaries to original content for context preservation.
 
     Awards:
       - title: Global Rank 10, Meta Hacker Cup 2025 (AI Track)
@@ -268,7 +239,7 @@ cv:
       - name: Machine Learning Specialization
         issuer: DeepLearning.AI
         icon: fa-solid fa-robot
-        
+
     Skills:
       - name: Languages
         icon: fa-solid fa-code

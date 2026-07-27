@@ -10,12 +10,21 @@ cleanup() {
 }
 trap cleanup EXIT
 
+# This site hides the starter's demo collections: `defaults` in _config.yml marks
+# posts/books/teachings `published: false`. Jekyll REPLACES (not merges) the
+# `defaults` array when configs are layered, so re-declaring it here restores the
+# distill demo post this test asserts on while keeping the sitemap exclusion.
 cat >"${tmp_override}" <<'YAML'
 giscus:
   repo: alshedivat/al-folio
   repo_id: R_kgDOExample
   category: Comments
   category_id: DIC_kwDOExample
+defaults:
+  - scope:
+      path: "assets"
+    values:
+      sitemap: false
 YAML
 
 bundle exec jekyll build --config "_config.yml,${tmp_override}" -d "${tmp_site}" >/dev/null

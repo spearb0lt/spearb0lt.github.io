@@ -7,7 +7,6 @@
 #
 # Hovering a poster shows the title; clicking opens its IMDb page.
 
-
 genres:
   - name: "Drama"
     movies:
