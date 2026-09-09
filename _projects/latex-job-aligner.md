@@ -5,7 +5,10 @@ description: A tool to tailor a LaTeX resume to any job description and compile 
 img: assets/img/project/latex-job-aligner.jpg
 importance: 1
 category: useful-tools
+tags: [tools, llms, automation, latex, chrome-extension]
 ---
+
+{% assign pt = site.data.project_tags %}{% assign all_families = 'domain,method,stack,meta' | split: ',' %}{% assign fams = pt.families_on.project_pages | default: all_families %}{% if pt.enabled and pt.show_on.project_pages and page.tags %}<div class="proj-tags proj-tags-page pt-style-{{ pt.style.project_pages | default: 'soft' }}">{% for t in page.tags %}{% assign fam = pt.map[t] | default: pt.default_family %}{% if fams contains fam %}<span class="proj-tag pt-{{ fam }} pt-tag-{{ t | slugify }}">{{ t }}</span>{% endif %}{% endfor %}</div>{% endif %}
 
 **Links:** [GitHub repository](https://github.com/spearb0lt/Job-Aligner-Latex-to-PDF-Generator)
 

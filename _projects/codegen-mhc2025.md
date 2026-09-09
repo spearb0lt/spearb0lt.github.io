@@ -5,7 +5,10 @@ description: An end-to-end AI solver built for the Meta Hacker Cup 2025 AI Track
 img: assets/img/project/codegen-mhc2025.jpg
 importance: 2
 category: agentic-ai/llm
+tags: [llms, agents, competitive-programming, multimodal, fastapi, gemini, global-rank-10]
 ---
+
+{% assign pt = site.data.project_tags %}{% assign all_families = 'domain,method,stack,meta' | split: ',' %}{% assign fams = pt.families_on.project_pages | default: all_families %}{% if pt.enabled and pt.show_on.project_pages and page.tags %}<div class="proj-tags proj-tags-page pt-style-{{ pt.style.project_pages | default: 'soft' }}">{% for t in page.tags %}{% assign fam = pt.map[t] | default: pt.default_family %}{% if fams contains fam %}<span class="proj-tag pt-{{ fam }} pt-tag-{{ t | slugify }}">{{ t }}</span>{% endif %}{% endfor %}</div>{% endif %}
 
 **Links:** [my-codegen-api2 (production API)](https://github.com/spearb0lt/my-codegen-api2) and [CodeGen-Hacker-Cup-AI-devkit (devkit)](https://github.com/spearb0lt/CodeGen-Hacker-Cup-AI-devkit)
 

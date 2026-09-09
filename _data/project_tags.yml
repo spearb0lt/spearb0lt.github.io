@@ -1,0 +1,264 @@
+# Project tags
+# ===========================================================================
+# Tags themselves live in front matter:
+#
+#     # _projects/legal-rag.md
+#     tags: [nlp, legal-tech, rag, hybrid-search, bm25]
+#
+#     # _data/repositories.yml
+#     - name: Legal-RAG
+#       tags: [nlp, legal-tech, rag]
+#
+# Everything about how they LOOK and WHERE they appear is controlled here.
+# Nothing else needs editing to turn tags off.
+# ---------------------------------------------------------------------------
+
+# Master switch. Set to false and no tag renders anywhere -- project cards,
+# project pages, repository cards -- and the projects filter bar disappears
+# with them. The `tags:` lines in front matter can stay where they are.
+enabled: true
+
+# Pill appearance, set per surface so they can differ. Three choices:
+#   soft   pale family-coloured wash, coloured label   (the quiet default)
+#   solid  full-strength family fill, contrasting label (the bold look)
+#   ghost  no fill, thin family-coloured outline
+# Mix freely, e.g. ghost on the project cards and soft on the repo cards.
+style:
+  projects: ghost # the cards on /projects/
+  project_pages: solid # each project's own page
+  repositories: soft # the cards on /repositories/
+
+# Space between a card's description and its tag row.
+#
+# The tag row is pinned to the bottom of the card. On the SHORTEST cards that
+# leaves a wide gap; on the TALLEST card in a row there is no slack at all, so
+# its tags necessarily sit right under the description. Raising this value
+# forces a gap there too -- and makes every card in that row taller by the same
+# amount, because the tallest card sets the row height. That is the whole
+# trade-off: tighter cards, or more breathing room. There is no third option.
+card_tag_gap: 0.55rem
+
+# How many tags a CARD shows before collapsing the rest behind a "+n" pill.
+# A project's own page always lists every tag. Set to 0 for no cap.
+# Clicking "+n" expands that card; filtering expands every card automatically.
+max_on_cards: 5
+
+# Per-surface switches, so tags can be dropped from one place without
+# touching the others.
+show_on:
+  projects: true # the cards on /projects/
+  project_pages: true # the row under the title on each project's own page
+  repositories: true # the cards on /repositories/
+
+# Which colour families each surface is allowed to show. A tag whose family is
+# not in the list here simply does not render on that surface -- the `tags:`
+# lines in front matter stay exactly as they are, and search still matches on
+# every tag, shown or not.
+#
+# The project cards deliberately carry `domain` only: at a glance you want the
+# field, not the toolchain. The project's own page and the repository cards
+# show the lot. To put the tech back on the cards, add `method` and `stack` to
+# the `projects` list below -- nothing else needs touching.
+families_on:
+  projects: [domain]
+  project_pages: [domain, method, stack, meta]
+  repositories: [domain, method, stack, meta]
+
+# The filter bar on /projects/. Runs entirely in the browser -- no plugin,
+# no index, no build step. It is skipped when `enabled` is false.
+search:
+  enabled: true # show the search box above the project grid
+  clickable_tags: true # clicking a tag on a card toggles it as a filter
+  placeholder: "Search" # text inside the empty search box
+  # What the "Filter" dropdown lets you tick. Either:
+  #   tags        every tag the cards are allowed to show (families_on.projects)
+  #   categories  the section headings - nlp, biomedical/cv, data-analytics, ...
+  filter_by: tags
+  # How ticking several boxes combines them:
+  #   any   OR  -- a project matching AT LEAST ONE ticked box shows (default:
+  #                "show me anything in cv OR analytics")
+  #   all   AND -- a project must match EVERY ticked box to show
+  #                ("show me only things that are cv AND analytics")
+  # The text box is always an extra AND on top of whichever mode this is, and
+  # it always searches EVERY tag a project has, including the ones families_on
+  # hides from the card.
+  #
+  # "all" is close to meaningless with filter_by: categories, because a
+  # project has exactly one category -- ticking two of them under "all" can
+  # never match anything. It is meant for filter_by: tags.
+  filter_mode: any
+
+# ---------------------------------------------------------------------------
+# Colour families
+# ---------------------------------------------------------------------------
+# Each tag belongs to one family, and the family decides its colour. The CSS
+# class is `pt-<family>`; the colours live in assets/css/main.scss (search for
+# "Project tags"). Adding a family means adding a `--pt-<name>-*` block there.
+#
+#   domain  the field the project belongs to   (cv, nlp, biomedical, ...)
+#   method  the technique it uses              (rag, federated-learning, ...)
+#   stack   the tools it is built on           (fastapi, duckdb, ...)
+#   meta    a note about the artefact itself   (published, live-demo, ...)
+#
+# A tag missing from `map` below still renders -- it just falls back to
+# `default_family`. Nothing breaks if you invent a tag and never list it here.
+
+default_family: stack
+
+# ---------------------------------------------------------------------------
+# Family colours -- THIS is where you change what colour a tag is
+# ---------------------------------------------------------------------------
+# One colour per family per theme, and that is the whole palette. Everything
+# else is derived from it at render time: the soft style washes it to 14%, the
+# solid style fills with it outright, and ghost uses it for the outline.
+#
+# To recolour a family, edit the hex here and rebuild. Nothing in
+# assets/css/main.scss needs touching -- it reads this block through Liquid.
+#
+# To ADD a family: give it a name and two colours below, then point some tags
+# at it in `map:`. Nothing else needs to change.
+#
+# `light` should be dark enough to read as text on a white card; `dark` should
+# be light enough to read on a near-black one. Both are also used as a solid
+# fill, against white text in light mode and near-black text in dark mode.
+families:
+  domain: { light: "#7c3aed", dark: "#a78bfa" } # violet
+  method: { light: "#0369a1", dark: "#38bdf8" } # blue
+  stack: { light: "#57657d", dark: "#94a3b8" } # slate
+  meta: { light: "#047857", dark: "#34d399" } # green
+
+# ---------------------------------------------------------------------------
+# Monochrome mode (optional) -- /projects/ only
+# ---------------------------------------------------------------------------
+# Overrides EVERY tag colour on the project grid -- family and per-tag colours
+# alike -- with this one colour instead. Nothing else changes: `families:` and
+# `colors:` above stay exactly as defined, and still apply everywhere else
+# (each project's own page, the repository cards). This only wins on the
+# /projects/ grid, and only while `enabled` here is true.
+#
+# Handy when you want the grid to read as one calm colour and let the tag
+# WORDS carry the information rather than a wall of hues.
+monochrome:
+  enabled: false
+  color: { light: "#0f766e", dark: "#2dd4bf" } # teal, matches the `cv` teal below
+
+# ---------------------------------------------------------------------------
+# Per-tag colour overrides (optional)
+# ---------------------------------------------------------------------------
+# A tag listed here ignores its family's colour and uses its own. Everything
+# else still works the same way -- soft washes it, solid fills with it, ghost
+# outlines with it -- so one hex pair per tag is all it takes.
+#
+# This matters most on /projects/, where families_on shows only `domain` tags
+# and every pill would otherwise be the same violet. Give each field its own
+# colour and the grid becomes scannable by hue.
+#
+# Leave it empty and nothing changes: every tag keeps its family colour.
+# Uncomment the block below to see it work, then edit to taste.
+colors:
+  # Every `domain` tag, so /projects/ reads by hue instead of one flat violet.
+  # Light values are dark enough for white text on a solid pill and for the
+  # label itself on a soft one; dark values are bright enough for the inverse.
+  cv: { light: "#0f766e", dark: "#2dd4bf" } # teal
+  nlp: { light: "#b45309", dark: "#fbbf24" } # amber
+  audio: { light: "#78350f", dark: "#d6a06a" } # sepia
+  chess: { light: "#1f6f4a", dark: "#6ee7a5" } # forest
+  llms: { light: "#7c3aed", dark: "#a78bfa" } # violet
+  biomedical: { light: "#be123c", dark: "#fb7185" } # rose
+  medical-imaging: { light: "#9d174d", dark: "#f472b6" } # pink
+  analytics: { light: "#0369a1", dark: "#38bdf8" } # blue
+  timeseries: { light: "#0e7490", dark: "#22d3ee" } # cyan
+  pdm: { light: "#c2410c", dark: "#fb923c" } # orange
+  optimization: { light: "#3f6212", dark: "#a3e635" } # lime
+  legal-tech: { light: "#4338ca", dark: "#818cf8" } # indigo
+  finance: { light: "#047857", dark: "#34d399" } # emerald
+  accessibility: { light: "#a21caf", dark: "#e879f9" } # fuchsia
+  hci: { light: "#6d28d9", dark: "#c4b5fd" } # purple
+  security: { light: "#b91c1c", dark: "#f87171" } # red
+  tools: { light: "#57657d", dark: "#94a3b8" } # slate
+
+# Which family each tag belongs to. A tag missing from this list still renders,
+# using `default_family` above.
+map:
+  # --- domain -------------------------------------------------------------
+  cv: domain
+  nlp: domain
+  audio: domain
+  chess: domain
+  llms: domain
+  biomedical: domain
+  medical-imaging: domain
+  timeseries: domain
+  pdm: domain
+  optimization: domain
+  analytics: domain
+  finance: domain
+  legal-tech: domain
+  accessibility: domain
+  security: domain
+  hci: domain
+  tools: domain
+
+  # --- method -------------------------------------------------------------
+  rag: method
+  agents: method
+  multimodal: method
+  hybrid-search: method
+  bm25: method
+  federated-learning: method
+  differential-privacy: method
+  privacy: method
+  causal-inference: method
+  experimentation: method
+  evaluation: method
+  constraint-programming: method
+  scheduling: method
+  identity-resolution: method
+  churn-prediction: method
+  sentiment-analysis: method
+  forecasting: method
+  transfer-learning: method
+  attention: method
+  deep-learning: method
+  anti-spoofing: method
+  sign-language: method
+  speech: method
+  document-ai: method
+  document-generation: method
+  image-generation: method
+  automation: method
+  competitive-programming: method
+  real-time: method
+  on-device: method
+  self-hosted: method
+  tabular: method
+
+  # --- stack --------------------------------------------------------------
+  fastapi: stack
+  pypi: stack
+  stockfish: stack
+  streamlit: stack
+  angular: stack
+  react: stack
+  duckdb: stack
+  dbt: stack
+  tableau: stack
+  pgvector: stack
+  docling: stack
+  or-tools: stack
+  mediapipe: stack
+  opencv: stack
+  transformers: stack
+  clip: stack
+  gemini: stack
+  groq: stack
+  pillow: stack
+  latex: stack
+  chrome-extension: stack
+
+  # --- meta ---------------------------------------------------------------
+  published: meta
+  live-demo: meta
+  hackathon: meta
+  reference: meta
+  global-rank-10: meta

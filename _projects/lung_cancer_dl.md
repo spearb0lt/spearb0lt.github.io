@@ -3,10 +3,13 @@ layout: page
 title: Lung Cancer Detection with Soft Attention
 description: A soft-attention deep transfer learning model for lung cancer identification from CT scans and histopathology.
 img: assets/img/project/lung_cancer_dl.jpg
-importance: 2
-category: biomedical/cv
+importance: 1
+category: biomedical
+tags: [cv, biomedical, medical-imaging, attention, transfer-learning, published]
 related_publications: true
 ---
+
+{% assign pt = site.data.project_tags %}{% assign all_families = 'domain,method,stack,meta' | split: ',' %}{% assign fams = pt.families_on.project_pages | default: all_families %}{% if pt.enabled and pt.show_on.project_pages and page.tags %}<div class="proj-tags proj-tags-page pt-style-{{ pt.style.project_pages | default: 'soft' }}">{% for t in page.tags %}{% assign fam = pt.map[t] | default: pt.default_family %}{% if fams contains fam %}<span class="proj-tag pt-{{ fam }} pt-tag-{{ t | slugify }}">{{ t }}</span>{% endif %}{% endfor %}</div>{% endif %}
 
 **Links:** [GitHub repository](https://github.com/spearb0lt/Lung-Cancer-Detection-Using-DL) and [paper (DOI)](https://doi.org/10.1109/ISACC65211.2025.10969319)
 

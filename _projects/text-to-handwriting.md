@@ -5,7 +5,10 @@ description: Converts typed text (including tables) into realistic handwriting a
 img: assets/img/project/text-to-handwriting.jpg
 importance: 2
 category: useful-tools
+tags: [tools, image-generation, automation, pillow, streamlit]
 ---
+
+{% assign pt = site.data.project_tags %}{% assign all_families = 'domain,method,stack,meta' | split: ',' %}{% assign fams = pt.families_on.project_pages | default: all_families %}{% if pt.enabled and pt.show_on.project_pages and page.tags %}<div class="proj-tags proj-tags-page pt-style-{{ pt.style.project_pages | default: 'soft' }}">{% for t in page.tags %}{% assign fam = pt.map[t] | default: pt.default_family %}{% if fams contains fam %}<span class="proj-tag pt-{{ fam }} pt-tag-{{ t | slugify }}">{{ t }}</span>{% endif %}{% endfor %}</div>{% endif %}
 
 **Links:** [GitHub repository](https://github.com/spearb0lt/Text-to-Handwriting-converter)
 

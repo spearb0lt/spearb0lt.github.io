@@ -6,6 +6,13 @@ repo_description_lines_max: 2
 # Kept for reference (these feed the optional github-readme-stats image cards,
 # which depend on an external service that is often rate-limited).
 github_repos:
+  - spearb0lt/Lichess-Essentials
+  - spearb0lt/Universal-Human-Communication-Interface-UHCI
+  - spearb0lt/BidRAG
+  - spearb0lt/Complete-RAG-Evaluation-Tools-Metrics-Methods-Framework-Benchmarks
+  - spearb0lt/Olist-Marketplace-Analytics
+  - spearb0lt/CP-SAT-Based-Timetabling-and-Exam-Arrangement
+  - spearb0lt/demo-timeweave
   - spearb0lt/Text-to-Handwriting-converter
   - spearb0lt/Consumer-Commission-Complaint-Agent
   - spearb0lt/LitigatAI
@@ -15,59 +22,110 @@ github_repos:
   - spearb0lt/SENTRAL-Multi-Spectrum-Stock-Analysis
   - spearb0lt/Context-Aware-Multimodal-Knowledge-Retrieval-System
   - spearb0lt/Scania
-  - spearb0lt/Gesture-Video-Cotroller
+  - spearb0lt/Gesture-Video-Controller
   - spearb0lt/Lung-Cancer-Detection-Using-DL
   - spearb0lt/Face-Liveliness-Detection-Using-DL
 
 # Self-contained cards rendered by _pages/repositories.md.
 # These do NOT depend on any external service, so they always render.
-# To add a repo: copy a block below and edit name / url / lang / desc.
+# To add a repo: copy a block below and edit name / url / lang / desc / tags.
+#
+# `tags` are optional and purely cosmetic. Their colours come from
+# _data/project_tags.yml (tag -> family) and assets/css/main.scss (family -> colour),
+# which is the same vocabulary the project cards use.
 repo_cards:
+  - name: Lichess-Essentials
+    url: https://github.com/spearb0lt/Lichess-Essentials
+    lang: Python
+    desc: Five chess tools (analyser, study-to-PDF, repertoire builder, opponent scout, weakness report), shipped as six PyPI packages and hosted live.
+    tags: [chess, tools, pypi, self-hosted, stockfish]
+  - name: Complete-RAG-Evaluation
+    url: https://github.com/spearb0lt/Complete-RAG-Evaluation-Tools-Metrics-Methods-Framework-Benchmarks
+    lang: Python
+    desc: A link-verified survey of RAG evaluation covering 547 benchmarks, frameworks, metrics, judge models and papers, regenerated from a CSV by a verify/enrich/audit/build pipeline.
+    tags: [nlp, rag, evaluation, reference]
+  - name: Universal-Human-Communication-Interface-UHCI
+    url: https://github.com/spearb0lt/Universal-Human-Communication-Interface-UHCI
+    lang: Python
+    desc: An offline communication app for Deaf and non-speaking users, with twelve input channels feeding one message box.
+    tags: [cv, accessibility, sign-language, on-device, mediapipe]
+  - name: BidRAG
+    url: https://github.com/spearb0lt/BidRAG
+    lang: Python
+    desc: Open-source RAG extraction for bidding and tender documents, running locally end to end with citations back to the source page.
+    tags: [nlp, rag, document-ai, self-hosted, pgvector]
+  - name: Olist-Marketplace-Analytics
+    url: https://github.com/spearb0lt/Olist-Marketplace-Analytics
+    lang: Python
+    desc: A dbt/DuckDB warehouse, a causal study of late delivery and an experiment design on Brazilian e-commerce data. Live Tableau dashboard.
+    tags: [analytics, causal-inference, dbt, duckdb, tableau]
+  - name: CP-SAT-Based-Timetabling-and-Exam-Arrangement
+    url: https://github.com/spearb0lt/CP-SAT-Based-Timetabling-and-Exam-Arrangement
+    lang: Python
+    desc: University timetabling and exam scheduling as a constraint satisfaction problem, solved with OR-Tools CP-SAT behind a FastAPI service.
+    tags: [optimization, constraint-programming, scheduling, or-tools]
+  - name: amex-hackathon (TimeWeave)
+    url: https://github.com/aayushdebugging/amex-hackathon
+    lang: Python
+    desc: A team hackathon project for American Express - cross-channel journey stitching, churn attribution and counterfactual cohorts.
+    tags: [analytics, identity-resolution, churn-prediction, duckdb, hackathon]
   - name: Scania
     url: https://github.com/spearb0lt/Scania
     lang: Jupyter Notebook
     desc: Privacy-preserving predictive maintenance on the IDA 2024 SCANIA-X dataset, using differential privacy and federated learning.
+    tags: [timeseries, pdm, federated-learning, differential-privacy, published]
   - name: SENTRAL-Multi-Spectrum-Stock-Analysis
     url: https://github.com/spearb0lt/SENTRAL-Multi-Spectrum-Stock-Analysis
     lang: Jupyter Notebook
     desc: An equity analysis platform fusing fundamentals, technicals, multi-LLM sentiment and LSTM/Transformer forecasting.
+    tags: [finance, nlp, sentiment-analysis, forecasting]
   - name: Context-Aware-Multimodal-Knowledge-Retrieval-System
     url: https://github.com/spearb0lt/Context-Aware-Multimodal-Knowledge-Retrieval-System
     lang: Jupyter Notebook
     desc: A multimodal RAG pipeline over PDFs that retrieves across text, tables, figures and formulas with cited answers.
+    tags: [nlp, rag, multimodal, document-ai, clip]
   - name: my-codegen-api2
     url: https://github.com/spearb0lt/my-codegen-api2
     lang: Python
     desc: An autonomous competitive-programming solver (FastAPI + Gemini) built for the Meta Hacker Cup 2025 AI Track.
+    tags: [llms, agents, competitive-programming, fastapi, global-rank-10]
   - name: CodeGen-Hacker-Cup-AI-devkit
     url: https://github.com/spearb0lt/CodeGen-Hacker-Cup-AI-devkit
     lang: Python
     desc: The development history and client tooling behind my-codegen-api2, my Global Rank 10 Hacker Cup solver.
+    tags: [llms, agents, competitive-programming, multimodal]
   - name: LitigatAI
     url: https://github.com/spearb0lt/LitigatAI
     lang: Python
-    desc: An AI litigation platform for Indian legal practice with 10 integrated tools. Live demo available.
+    desc: An AI workbench for Indian litigation practice with ten tools from first brief to final filing, FastAPI, bring your own key across five providers.
+    tags: [llms, legal-tech, agents, fastapi, hackathon]
   - name: Consumer-Commission-Complaint-Agent
     url: https://github.com/spearb0lt/Consumer-Commission-Complaint-Agent
     lang: Python
-    desc: A guided-intake agent that drafts a file-ready Indian Consumer Commission complaint. Live demo available.
+    desc: A guided intake that drafts a file-ready Consumer Commission complaint, with jurisdiction routing computed deterministically rather than by a model.
+    tags: [llms, legal-tech, document-generation, fastapi, hackathon]
   - name: Legal-RAG
     url: https://github.com/spearb0lt/Legal-RAG
     lang: Python
-    desc: A citation-grounded RAG chatbot over Indian statutes and case law, with hybrid vector plus BM25 retrieval.
+    desc: Citation-grounded research over 19,144 passages of Indian law, with every citation verified against the passage it names before the answer renders.
+    tags: [nlp, legal-tech, rag, hybrid-search, on-device, hackathon]
   - name: Lung-Cancer-Detection-Using-DL
     url: https://github.com/spearb0lt/Lung-Cancer-Detection-Using-DL
     lang: Jupyter Notebook
     desc: Soft-attention deep transfer learning for lung cancer identification from CT scans (published at IEEE ISACC 2025).
+    tags: [cv, biomedical, medical-imaging, attention, published]
   - name: Face-Liveliness-Detection-Using-DL
     url: https://github.com/spearb0lt/Face-Liveliness-Detection-Using-DL
     lang: Python
     desc: A lightweight, fast anti-spoofing model that distinguishes real faces from fake images and videos.
-  - name: Gesture-Video-Cotroller
-    url: https://github.com/spearb0lt/Gesture-Video-Cotroller
+    tags: [cv, security, anti-spoofing, real-time, opencv]
+  - name: Gesture-Video-Controller
+    url: https://github.com/spearb0lt/Gesture-Video-Controller
     lang: Python
     desc: A webcam hand-tracking system to control media playback with single-hand and dual-hand gestures.
+    tags: [cv, tools, hci, real-time, mediapipe]
   - name: Text-to-Handwriting-converter
     url: https://github.com/spearb0lt/Text-to-Handwriting-converter
     lang: Jupyter Notebook
     desc: Converts typed text (including tables) into realistic handwriting and exports it as an A4 PDF.
+    tags: [tools, image-generation, automation, pillow]

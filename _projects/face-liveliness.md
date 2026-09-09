@@ -3,9 +3,12 @@ layout: page
 title: Face Liveliness Detection
 description: A lightweight, fast anti-spoofing model that tells real faces from fake images and videos.
 img: assets/img/project/face-liveliness.jpg
-importance: 1
-category: biomedical/cv
+importance: 2
+category: cv
+tags: [cv, security, anti-spoofing, deep-learning, real-time, opencv]
 ---
+
+{% assign pt = site.data.project_tags %}{% assign all_families = 'domain,method,stack,meta' | split: ',' %}{% assign fams = pt.families_on.project_pages | default: all_families %}{% if pt.enabled and pt.show_on.project_pages and page.tags %}<div class="proj-tags proj-tags-page pt-style-{{ pt.style.project_pages | default: 'soft' }}">{% for t in page.tags %}{% assign fam = pt.map[t] | default: pt.default_family %}{% if fams contains fam %}<span class="proj-tag pt-{{ fam }} pt-tag-{{ t | slugify }}">{{ t }}</span>{% endif %}{% endfor %}</div>{% endif %}
 
 **Links:** [GitHub repository](https://github.com/spearb0lt/Face-Liveliness-Detection-Using-DL)
 

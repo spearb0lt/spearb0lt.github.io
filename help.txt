@@ -262,8 +262,89 @@ Two things worth knowing for later: on a fresh clone the hook is dormant until y
 
 
 -----------------------
-stable version
-git revert a58084f4b50b6c13c63f4b697c4730552c826ce5
-git push
+Tags live in front matter — tags: [nlp, legal-tech, rag, ...] in each _projects/*.md, and tags: on each repo card in _data/repositories.yml. Add or remove freely; a tag not listed anywhere else still renders.
+Colour is decided in project_tags.yml — a plain tag: family map. Four families: domain (purple — cv, nlp, llms, biomedical, timeseries, pdm, optimization, analytics, tools…), method (blue — rag, federated-learning, causal-inference…), stack (grey — fastapi, duckdb, or-tools…), meta (green — published, live-demo, hackathon, global-rank-10). Unmapped tags fall back to grey.
+Colours themselves are in main.scss under "Project tags", light and dark defined separately.
+Tags render on project cards, project detail pages, and repository cards.
 
-a58084f4b50b6c13c63f4b697c4730552c826ce5
+One structural note: the card markup is now inlined in projects.md rather than in _includes/projects.liquid. That's forced — style_contract.js:66 fails CI if this repo owns an _includes/ directory at all, so a local override of the gem's include isn't possible. Consequence: the horizontal: true layout still uses the gem include and shows no tags. You're on horizontal: false, so it doesn't bite today.
+
+
+Rounded-rect pills with the leading colour chip from your reference, no border, capped at 5 per card. Style is switchable in project_tags.yml — style: soft (default), solid (full-colour fill, your image), or ghost (outline + dot). All three render correctly in light and dark; in dark, solid flips to bright fill + near-black text so contrast stays above 4.5:1 rather than scraping past it.
+
+Everything lives in project_tags.yml. Verified by actually building with the switches off, not just by reading the code:
+
+enabled: false → 0 tags on project cards, project pages and repository cards; filter bar and its script gone entirely.
+show_on.repositories: false → repository cards clean, project cards and project pages untouched.
+Your tags: lines in front matter stay put either way.
+
+What to edit, next time
+Everything is in _data/project_tags.yml except the tag lists themselves.
+
+You want to…	                                       Do this
+Add/remove a tag on a project	           Edit tags: [...] in that _projects/*.md front matter
+Add/remove a tag on a repo card	         Edit tags: [...] in repositories.yml
+Change a tag's colour	                   Move it to another family in map: — e.g. duckdb: stack → duckdb: domain
+Put tech back on the project cards	     families_on.projects: [domain, method] (or add stack)
+Switch to the bold look	                 style: solid
+Show more/fewer tags per card	            max_on_cards: 5 (0 = no cap)
+Turn tags off in one place	              show_on.repositories: false
+Turn tags off everywhere	                enabled: false
+Turn off just the search box	            search.enabled: false
+Stop tags being clickable filters	        search.clickable_tags: false
+
+A tag you invent and never list in map: still renders — it just falls back to default_family (grey). Nothing breaks.
+
+Two things that need a second file: a brand-new family needs a --pt-<name>-{bg,fg,solid} trio added to both :root blocks in main.scss (search "Project tags"), and the fallback list 'domain,method,stack,meta' in projects.md:41 — that fallback only matters if you delete families_on outright.
+
+One thing I should flag: the placeholder still reads "try rag, federated, streamlit…", which are all now hidden tags. I left it deliberately — it hints that search reaches deeper than the visible pills — but change search.placeholder if you'd rather it name visible ones.
+
+Monochrome mode
+
+# _data/project_tags.yml
+monochrome:
+  enabled: false
+  color: { light: "#047857", dark: "#2dd4bf" }   # teal (default, as asked)
+Scoped to /projects/ only — verified in the browser: with it on, nlp, legal-tech, finance, timeseries, llms all resolved to the same #0f766e on the cards, while the repository cards and each project's own page kept their normal per-tag/family colours untouched. The active-filter chips above the grid go teal too, since they're clones of the card pills. families: and colors: stay exactly as defined — this doesn't erase them, it just overrides what wins on that one page.
+
+Merge search (AND)
+
+search:
+  filter_mode: any   # any = OR (default) · all = AND
+Tested: with filter_mode: all, ticking cv + analytics returned 0 of 19 (no project carries both), and unticking back to just cv correctly returned 5. Reset to any, the same two boxes returned 7 of 19 as before — regression-clean.
+
+One thing worth knowing, noted in the yml comment: all is close to meaningless when filter_by: categories, since a project has exactly one category — ticking two under AND can never match anything. It's built for filter_by: tags, which is what you're running.
+
+Style contract and prettier pass; no JS errors in either theme.
+
+
+
+
+
+
+
+domain: { light: "#7c3aed", dark: "#a78bfa" } # violet
+  method: { light: "#0369a1", dark: "#38bdf8" } # blue
+  stack: { light: "#57657d", dark: "#94a3b8" } # slate
+  meta: { light: "#047857", dark: "#34d399" } # green
+
+  cv: { light: "#0f766e", dark: "#2dd4bf" } # teal
+  nlp: { light: "#b45309", dark: "#fbbf24" } # amber
+  audio: { light: "#78350f", dark: "#d6a06a" } # sepia
+  llms: { light: "#7c3aed", dark: "#a78bfa" } # violet
+  biomedical: { light: "#be123c", dark: "#fb7185" } # rose
+  medical-imaging: { light: "#9d174d", dark: "#f472b6" } # pink
+  analytics: { light: "#0369a1", dark: "#38bdf8" } # blue
+  timeseries: { light: "#0e7490", dark: "#22d3ee" } # cyan
+  pdm: { light: "#c2410c", dark: "#fb923c" } # orange
+  optimization: { light: "#3f6212", dark: "#a3e635" } # lime
+  legal-tech: { light: "#4338ca", dark: "#818cf8" } # indigo
+  finance: { light: "#047857", dark: "#34d399" } # emerald
+  accessibility: { light: "#a21caf", dark: "#e879f9" } # fuchsia
+  hci: { light: "#6d28d9", dark: "#c4b5fd" } # purple
+  security: { light: "#b91c1c", dark: "#f87171" } # red
+  tools: { light: "#57657d", dark: "#94a3b8" } # slate
+
+
+
+

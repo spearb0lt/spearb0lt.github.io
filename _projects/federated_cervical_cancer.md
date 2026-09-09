@@ -3,9 +3,12 @@ layout: page
 title: Federated Cervical Cancer Detection
 description: Cervical cancer detection on Pap smear images, comparing three federated learning strategies.
 img: assets/img/project/federated_cervical_cancer.jpg
-importance: 3
-category: biomedical/cv
+importance: 2
+category: biomedical
+tags: [cv, biomedical, medical-imaging, federated-learning, privacy]
 ---
+
+{% assign pt = site.data.project_tags %}{% assign all_families = 'domain,method,stack,meta' | split: ',' %}{% assign fams = pt.families_on.project_pages | default: all_families %}{% if pt.enabled and pt.show_on.project_pages and page.tags %}<div class="proj-tags proj-tags-page pt-style-{{ pt.style.project_pages | default: 'soft' }}">{% for t in page.tags %}{% assign fam = pt.map[t] | default: pt.default_family %}{% if fams contains fam %}<span class="proj-tag pt-{{ fam }} pt-tag-{{ t | slugify }}">{{ t }}</span>{% endif %}{% endfor %}</div>{% endif %}
 
 **Links:** [GitHub repository](https://github.com/spearb0lt/Cervical-Cancer-Detection-implementing-FL-using-Pap-Smear-Dataset)
 

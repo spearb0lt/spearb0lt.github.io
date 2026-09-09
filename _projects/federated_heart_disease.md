@@ -3,9 +3,12 @@ layout: page
 title: Federated Heart Disease Prediction
 description: Predicting heart disease from clinical biomarkers using federated learning.
 img: assets/img/project/federated_heart_disease.jpg
-importance: 4
-category: biomedical/cv
+importance: 3
+category: biomedical
+tags: [biomedical, federated-learning, privacy, tabular]
 ---
+
+{% assign pt = site.data.project_tags %}{% assign all_families = 'domain,method,stack,meta' | split: ',' %}{% assign fams = pt.families_on.project_pages | default: all_families %}{% if pt.enabled and pt.show_on.project_pages and page.tags %}<div class="proj-tags proj-tags-page pt-style-{{ pt.style.project_pages | default: 'soft' }}">{% for t in page.tags %}{% assign fam = pt.map[t] | default: pt.default_family %}{% if fams contains fam %}<span class="proj-tag pt-{{ fam }} pt-tag-{{ t | slugify }}">{{ t }}</span>{% endif %}{% endfor %}</div>{% endif %}
 
 **Links:** [GitHub repository](https://github.com/spearb0lt/Heart-Disease-Prediction-with-Biomarkers-using-Federated-Learning)
 

@@ -45,6 +45,7 @@ nav_order: 4
   .repo-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,.12); transform: translateY(-3px); }
   .repo-card .rc-name { font-weight: 600; color: var(--global-theme-color, #b509ac); word-break: break-word; margin-bottom: .4rem; }
   .repo-card .rc-desc { font-size: .9rem; color: var(--global-text-color, #333); line-height: 1.45; flex-grow: 1; }
+  .repo-card .proj-tags { margin-top: .6rem; }
   .repo-card .rc-lang { font-size: .78rem; color: var(--global-text-color-light, #828282); margin-top: .7rem; }
   .repo-card .rc-lang::before { content: "\25CF"; color: var(--global-theme-color, #b509ac); margin-right: .4rem; }
 </style>
@@ -61,11 +62,31 @@ nav_order: 4
 
 ## Repositories
 
+{% assign pt = site.data.project_tags %}
+{% assign show_tags = false %}
+{% if pt.enabled and pt.show_on.repositories %}{% assign show_tags = true %}{% endif %}
+{% assign tag_style = pt.style.repositories | default: 'soft' %}
+{% assign all_families = 'domain,method,stack,meta' | split: ',' %}
+{% assign card_families = pt.families_on.repositories | default: all_families %}
+{% if pt.max_on_cards and pt.max_on_cards > 0 %}{% assign cap = pt.max_on_cards %}{% else %}{% assign cap = 9999 %}{% endif %}
+
 <div class="repo-grid">
   {% for repo in site.data.repositories.repo_cards %}
     <a class="repo-card" href="{{ repo.url }}" target="_blank" rel="noopener">
       <span class="rc-name">{{ repo.name }}</span>
       <span class="rc-desc">{{ repo.desc }}</span>
+      {% capture repo_tags_csv %}{% for t in repo.tags %}{% assign fam = pt.map[t] | default: pt.default_family %}{% if card_families contains fam %}{{ t }},{% endif %}{% endfor %}{% endcapture %}
+      {% assign repo_tags = repo_tags_csv | split: ',' %}
+      {% if show_tags and repo_tags.size > 0 %}
+        <span class="proj-tags pt-style-{{ tag_style }}">
+          {% for t in repo_tags %}
+            {% assign fam = pt.map[t] | default: pt.default_family %}
+            <span class="proj-tag pt-{{ fam }} pt-tag-{{ t | slugify }}{% if forloop.index0 >= cap %} pt-overflow{% endif %}">{{ t }}</span>
+          {% endfor %}
+          {% assign extra = repo_tags.size | minus: cap %}
+          {% if extra > 0 %}<span class="proj-tag pt-more">+{{ extra }}</span>{% endif %}
+        </span>
+      {% endif %}
       {% if repo.lang %}<span class="rc-lang">{{ repo.lang }}</span>{% endif %}
     </a>
   {% endfor %}

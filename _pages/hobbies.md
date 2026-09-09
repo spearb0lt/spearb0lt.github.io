@@ -36,7 +36,7 @@ I love to watch movies and shows for entertainment and sometimes in free time bi
 ## Sports
 
 <div style="max-width: 360px; margin: 1rem auto;">
-  {% include figure.liquid path="assets/img/hobbies/badminton.png" class="img-fluid rounded z-depth-1" alt="Badminton and shuttlecock" %}
+  {% include figure.liquid path="assets/img/hobbies/badminton.jpg" class="img-fluid rounded z-depth-1" alt="Badminton and shuttlecock" %}
 </div>
 
 I enjoy playing outdoor sports and going to the gym to stay fit and healthy. My favourite sports are badminton, football and cricket. I also enjoy swimming and playing pool.
@@ -44,7 +44,7 @@ I enjoy playing outdoor sports and going to the gym to stay fit and healthy. My 
 ## Gaming
 
 <div style="max-width: 360px; margin: 1rem auto;">
-  {% include figure.liquid path="assets/img/hobbies/calshroayel.png" class="img-fluid rounded z-depth-1" alt="Clash royale game" %}
+  {% include figure.liquid path="assets/img/hobbies/clashroyale.png" class="img-fluid rounded z-depth-1" alt="Clash royale game" %}
 </div>
 When I want something more relaxed, I game. My current go-to is **Clash Royale**.
 

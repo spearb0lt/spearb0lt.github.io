@@ -85,3 +85,505 @@
   font-size: 0.9rem;
   margin-left: 0.75rem;
 }
+
+/* ======================================================================
+   Project tags
+   ----------------------------------------------------------------------
+   Pills on project cards (_pages/projects.md), project pages (_projects/*.md)
+   and repository cards (_pages/repositories.md).
+
+   NOTHING HERE NEEDS EDITING TO RECOLOUR A TAG. The palette below is generated
+   from `families:` in _data/project_tags.yml -- one colour per family per
+   theme -- and every style derives from it: `soft` washes it to 14%, `solid`
+   fills with it, `ghost` outlines with it. Adding a family there adds it here
+   automatically. Which family a tag belongs to is `map:` in the same file.
+   ====================================================================== */
+
+:root {
+{% for fam in site.data.project_tags.families %}  --pt-{{ fam[0] }}: {{ fam[1].light }};
+{% endfor %}  --pt-solid-text: #ffffff;
+  --pt-more-bg: rgba(100, 116, 139, 0.1);
+  --pt-more-text: var(--global-text-color-light);
+}
+
+html[data-theme="dark"] {
+{% for fam in site.data.project_tags.families %}  --pt-{{ fam[0] }}: {{ fam[1].dark }};
+{% endfor %}
+  /* Dark mode inverts the solid style: bright fill, near-black label, which
+     keeps contrast well above 4.5:1 instead of scraping past it. */
+  --pt-solid-text: #0b1220;
+  --pt-more-bg: rgba(148, 163, 184, 0.12);
+}
+
+/* Per-tag overrides from `colors:` in the same data file. Declared after the
+   family variables so a tag with its own colour wins, and left out entirely
+   when the block is empty. */
+{% assign tag_colors = site.data.project_tags.colors %}
+{% if tag_colors and tag_colors != empty %}
+:root {
+{% for c in tag_colors %}  --pt-tag-{{ c[0] | slugify }}: {{ c[1].light }};
+{% endfor %}}
+
+html[data-theme="dark"] {
+{% for c in tag_colors %}  --pt-tag-{{ c[0] | slugify }}: {{ c[1].dark }};
+{% endfor %}}
+{% endif %}
+
+/* Each family sets one variable; every rule below reads only that. */
+{% for fam in site.data.project_tags.families %}.proj-tag.pt-{{ fam[0] }} {
+  --pt-fill: var(--pt-{{ fam[0] }});
+}
+{% endfor %}
+{% if tag_colors and tag_colors != empty %}
+/* Same specificity as the family rules above, so source order decides and the
+   per-tag colour is the one that lands. */
+{% for c in tag_colors %}.proj-tag.pt-tag-{{ c[0] | slugify }} {
+  --pt-fill: var(--pt-tag-{{ c[0] | slugify }});
+}
+{% endfor %}{% endif %}
+
+/* Monochrome mode: `monochrome:` in the same data file. `.pt-mono` is only
+   ever added to the /projects/ grid (see _pages/projects.md), and only when
+   `monochrome.enabled` is true there -- so this rule is inert everywhere else
+   regardless of specificity. `!important` is what lets one colour beat every
+   family and per-tag rule above without having to out-specificity each of
+   them individually. */
+:root {
+  --pt-mono: {{ site.data.project_tags.monochrome.color.light | default: "#0f766e" }};
+}
+html[data-theme="dark"] {
+  --pt-mono: {{ site.data.project_tags.monochrome.color.dark | default: "#2dd4bf" }};
+}
+.pt-mono .proj-tag {
+  --pt-fill: var(--pt-mono) !important;
+}
+
+.proj-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.7rem;
+}
+
+.proj-tag {
+  --pt-fill: var(--pt-stack);
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.16rem 0.55rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 1.45;
+  white-space: nowrap;
+  color: var(--pt-fill);
+}
+
+/* One tinted layer behind the label does the work of three palettes. Painting
+   it as a pseudo-element rather than a translucent background-color means the
+   whole scheme derives from a single opaque hex per family, with no colour
+   maths and no dependency on color-mix(). */
+.proj-tag::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background-color: var(--pt-fill);
+  opacity: 0.14;
+}
+
+/* --- style: solid ----------------------------------------------------- */
+
+.pt-style-solid .proj-tag {
+  color: var(--pt-solid-text);
+  font-weight: 600;
+}
+.pt-style-solid .proj-tag::before {
+  opacity: 1;
+}
+
+/* --- style: ghost ----------------------------------------------------- */
+
+.pt-style-ghost .proj-tag {
+  font-weight: 400;
+}
+.pt-style-ghost .proj-tag::before {
+  background-color: transparent;
+  border: 1px solid var(--pt-fill);
+  opacity: 0.55;
+}
+
+/* --- the "+n" overflow pill ------------------------------------------- */
+
+.proj-tag.pt-more {
+  color: var(--pt-more-text);
+  font-weight: 500;
+  cursor: pointer;
+}
+.proj-tag.pt-more::before,
+.pt-style-solid .proj-tag.pt-more::before,
+.pt-style-ghost .proj-tag.pt-more::before {
+  background-color: var(--pt-more-bg);
+  border: 0;
+  opacity: 1;
+}
+
+/* Tags past the cap are rendered but hidden, so filtering and "+n" can reveal
+   them without re-rendering anything. */
+.proj-tag.pt-overflow {
+  display: none;
+}
+.proj-tags.is-expanded .proj-tag.pt-overflow {
+  display: inline-flex;
+}
+.proj-tags.is-expanded .proj-tag.pt-more {
+  display: none;
+}
+
+/* families_on in _data/project_tags.yml can filter every tag out of a row.
+   Rather than special-casing that in four places of Liquid, drop the empty
+   container here. */
+.proj-tags:empty {
+  display: none;
+}
+
+/* On a project's own page the row sits under the title and description.
+   The top margin must stay >= 0. al_folio_core's no_defer.js adds
+   `table-responsive` to every table's PARENT, and on a project page that
+   parent is <article>, which then becomes `display:block; overflow-x:auto`.
+   CSS resolves the other axis to `auto` too, so the article clips vertically,
+   and an earlier -0.6rem pull here put the top of every pill outside the
+   article's box on any page containing a table. */
+.proj-tags-page {
+  margin: 0 0 1.6rem;
+}
+
+/* Project cards: pin the tag row to the bottom of the card. `.card` is already
+   a flex column and `.card-body` already grows, so making the body a column
+   too lets `margin-top: auto` push the row down. Cards in a row are stretched
+   to equal height, so this lines every tag row up instead of leaving each one
+   hanging under a description of a different length.
+
+   On the TALLEST card in a row there is no slack to push into, so its tag row
+   necessarily sits directly under the description. That is geometry, not a
+   bug: the only way to open a gap there is to make the card taller. */
+.projects .card .card-body {
+  display: flex;
+  flex-direction: column;
+}
+.projects .card .card-body .proj-tags {
+  margin-top: auto;
+  padding-top: {{ site.data.project_tags.card_tag_gap | default: '0.55rem' }};
+}
+/* A tag row is always the last thing in the body, so it can eat into the
+   body's own bottom padding. That drops the height the row costs a card to
+   roughly the height of one pill, which is the floor. */
+.projects .card .card-body > .proj-tags:last-child {
+  margin-bottom: -0.5rem;
+}
+
+/* ======================================================================
+   Projects filter bar
+   ----------------------------------------------------------------------
+   Markup in _pages/projects.md, behaviour in assets/js/projects-filter.js,
+   switches in _data/project_tags.yml. Everything here starts hidden, so a
+   visitor without JS gets the full unfiltered grid rather than half-working
+   controls.
+   ====================================================================== */
+
+/* The bar is lifted out of normal flow entirely. An earlier version used a
+   negative top margin, but the element still occupied its own height and so
+   pushed the first category heading 30px further down than on a page without
+   it. `.pf-anchor` is a zero-height positioning context, so the bar now costs
+   the layout nothing at all and the heading sits exactly where it always did. */
+.pf-anchor {
+  position: relative;
+  height: 0;
+}
+
+/* Both .pf-anchor and .pf-active are zero-height, but they still sit between
+   the top of <article> and .projects, which stops the first category heading's
+   2rem top margin from collapsing into the page header the way it does on a
+   page with no filter bar. Left alone that margin becomes 32px of real space.
+   Zeroing it on whichever section is currently first restores the original
+   spacing exactly -- and doing it on the first VISIBLE section (a class the
+   filter script maintains) keeps it stable while filtering, when the original
+   first section may be hidden. */
+.projects > [data-pf-section].pf-first h2.category {
+  margin-top: 0;
+}
+
+.projects-filter {
+  display: none;
+}
+.projects-filter.is-ready {
+  display: block;
+}
+
+.pf-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.4rem;
+}
+
+/* From tablet up the bar sits beside the page title, which the layout renders
+   above {{ content }} and so cannot be reached any other way. Below 768px it
+   returns to normal flow at full width, where a description that wraps to two
+   lines would otherwise collide with it. */
+@media (min-width: 768px) {
+  .projects-filter.is-ready {
+    position: absolute;
+    right: 0;
+    bottom: 0.9rem;
+    width: 24rem;
+  }
+}
+@media (max-width: 767.98px) {
+  .pf-anchor {
+    position: static;
+    height: auto;
+  }
+  .projects-filter.is-ready {
+    margin: 0 0 1.25rem;
+  }
+}
+
+.pf-input-wrap {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.pf-input {
+  width: 100%;
+  padding: 0.3rem 1.7rem 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--global-text-color);
+  background-color: var(--global-card-bg-color);
+  border: 1px solid var(--global-divider-color);
+  border-radius: 6px;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.pf-input::placeholder {
+  color: var(--global-text-color-light);
+}
+.pf-input:focus {
+  outline: none;
+  border-color: var(--global-theme-color);
+  box-shadow: 0 0 0 2px rgba(128, 128, 128, 0.16);
+}
+
+.pf-clear {
+  position: absolute;
+  top: 50%;
+  right: 0.35rem;
+  transform: translateY(-50%);
+  display: none;
+  padding: 0 0.25rem;
+  font-size: 0.95rem;
+  line-height: 1;
+  color: var(--global-text-color-light);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.pf-clear.is-visible {
+  display: block;
+}
+.pf-clear:hover {
+  color: var(--global-theme-color);
+}
+
+/* --- the multi-select dropdown --------------------------------------- */
+
+.pf-facet {
+  position: relative;
+  flex: none;
+  display: inline-block;
+}
+
+.pf-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.55rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  white-space: nowrap;
+  color: var(--global-text-color);
+  background-color: var(--global-card-bg-color);
+  border: 1px solid var(--global-divider-color);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.pf-toggle:hover,
+.pf-toggle[aria-expanded="true"] {
+  border-color: var(--global-theme-color);
+  color: var(--global-theme-color);
+}
+
+.pf-caret {
+  width: 0;
+  height: 0;
+  border-left: 3.5px solid transparent;
+  border-right: 3.5px solid transparent;
+  border-top: 4px solid currentColor;
+}
+
+.pf-badge {
+  min-width: 1.05rem;
+  padding: 0 0.25rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  line-height: 1.05rem;
+  text-align: center;
+  color: var(--global-hover-text-color);
+  background-color: var(--global-theme-color);
+  border-radius: 999px;
+}
+
+.pf-menu {
+  position: absolute;
+  top: calc(100% + 0.3rem);
+  right: 0;
+  z-index: 20;
+  display: block;
+  width: 15rem;
+  padding: 0.35rem;
+  background-color: var(--global-card-bg-color);
+  border: 1px solid var(--global-divider-color);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+.pf-menu[hidden] {
+  display: none;
+}
+
+/* Two columns keeps a 15-item list from turning into a scroll marathon. */
+.pf-menu-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.05rem 0.3rem;
+  max-height: 15rem;
+  overflow-y: auto;
+}
+
+.pf-opt {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0.22rem 0.3rem;
+  font-size: 0.75rem;
+  line-height: 1.3;
+  color: var(--global-text-color);
+  border-radius: 4px;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+.pf-opt:hover {
+  background-color: var(--pt-more-bg);
+}
+.pf-opt input {
+  flex: none;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin: 0;
+  accent-color: var(--global-theme-color);
+  cursor: pointer;
+}
+
+.pf-menu-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+  padding-top: 0.35rem;
+  border-top: 1px solid var(--global-divider-color);
+}
+
+.pf-count {
+  font-size: 0.7rem;
+  color: var(--global-text-color-light);
+}
+
+.pf-reset {
+  padding: 0.1rem 0.4rem;
+  font-size: 0.7rem;
+  line-height: 1.4;
+  color: var(--global-text-color-light);
+  background: none;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.pf-reset:hover {
+  color: var(--global-theme-color);
+  border-color: var(--global-theme-color);
+}
+
+/* --- active filter chips, in normal flow above the grid --------------- */
+
+.pf-active {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem;
+}
+.pf-active:not(:empty) {
+  margin-bottom: 1.1rem;
+}
+.pf-active .proj-tag {
+  cursor: pointer;
+}
+.pf-active .proj-tag::after {
+  content: "\00d7";
+  margin-left: 0.15rem;
+  font-size: 0.85rem;
+  line-height: 1;
+  opacity: 0.7;
+}
+
+.pf-empty {
+  display: none;
+  padding: 2.5rem 0;
+  text-align: center;
+  color: var(--global-text-color-light);
+}
+.pf-empty.is-visible {
+  display: block;
+}
+
+/* Filtering state: cards and whole category blocks drop out, and every card
+   expands its hidden tags so a match is never invisible. */
+.pf-hidden {
+  display: none !important;
+}
+.projects.is-filtering .proj-tag.pt-overflow {
+  display: inline-flex;
+}
+.projects.is-filtering .proj-tag.pt-more {
+  display: none;
+}
+
+/* Card tags only advertise themselves as clickable once the script is live. */
+.projects.pf-clickable .card .proj-tag {
+  cursor: pointer;
+}
+.projects.pf-clickable .card .proj-tag:hover {
+  filter: brightness(0.94);
+}
+html[data-theme="dark"] .projects.pf-clickable .card .proj-tag:hover {
+  filter: brightness(1.18);
+}
+.projects .card .proj-tag.is-active {
+  outline: 2px solid var(--global-theme-color);
+  outline-offset: 1px;
+}
