@@ -10,9 +10,21 @@ tags: [chess, tools, pypi, self-hosted, stockfish, live-demo]
 
 {% assign pt = site.data.project_tags %}{% assign all_families = 'domain,method,stack,meta' | split: ',' %}{% assign fams = pt.families_on.project_pages | default: all_families %}{% if pt.enabled and pt.show_on.project_pages and page.tags %}<div class="proj-tags proj-tags-page pt-style-{{ pt.style.project_pages | default: 'soft' }}">{% for t in page.tags %}{% assign fam = pt.map[t] | default: pt.default_family %}{% if fams contains fam %}<span class="proj-tag pt-{{ fam }} pt-tag-{{ t | slugify }}">{{ t }}</span>{% endif %}{% endfor %}</div>{% endif %}
 
-**Links:** [GitHub repository](https://github.com/spearb0lt/Lichess-Essentials), [`lichess-essentials` on PyPI](https://pypi.org/project/lichess-essentials/) and [Study to PDF running live](https://study.lichess-essentials.duckdns.org)
+**Links:** [GitHub repository](https://github.com/spearb0lt/Lichess-Essentials) and [`lichess-essentials` on PyPI](https://pypi.org/project/lichess-essentials/)
 
 Five tools that fix the things I kept running into as a long-time Lichess user. Built for my own use, open-sourced in case they are useful to anyone else, published as six packages on PyPI and running live on one free Oracle Cloud ARM machine behind real HTTPS.
+
+## Try them live
+
+| App                                                                     | Access         |
+| ----------------------------------------------------------------------- | -------------- |
+| [Lichess Study to PDF](https://study.lichess-essentials.duckdns.org)    | open, no login |
+| [ChessAnalyzer](https://analyzer.lichess-essentials.duckdns.org)        | shared login   |
+| [Player-Prepper](https://prepper.lichess-essentials.duckdns.org)        | shared login   |
+| [Repertoire-Creator](https://repertoire.lichess-essentials.duckdns.org) | shared login   |
+| [Weakness-Report](https://weakness.lichess-essentials.duckdns.org)      | shared login   |
+
+The four gated apps share one HTTP Basic login, `test` / `testpassword1234@`, published deliberately. The gate keeps crawlers and automated traffic off a free-tier box rather than securing anything, so the credentials are meant to be used. Your browser will ask for them the moment you open one of those four.
 
 ## The five apps
 
@@ -40,6 +52,6 @@ Releases run only on a version tag, so pushing to `main` changes nothing on PyPI
 
 ## Deployment, with its caveats stated
 
-All five run on one free Oracle Cloud ARM machine. Study to PDF is open; the other four sit behind a shared password published in the README on purpose, so anyone can try them. There are no user accounts, so saved data is shared too, and the README says to treat anything you put in as public. It also warns not to paste a Lichess token you care about, because four of the apps hold a pasted token in a process-wide global that would be used by every other visitor until that app restarts. Player-Prepper's scouting reports and Weakness-Report's history are gitignored: a report about a named person, and a page of numbers about how you play, are not things to publish by accident.
+There are no user accounts behind that shared login, so saved data is shared between visitors too, and anything you put in should be treated as public. Do not paste a Lichess token you care about either, because four of the apps hold a pasted token in a process-wide global that would be used by every other visitor until that app restarts. Player-Prepper's scouting reports and Weakness-Report's history are gitignored: a report about a named person, and a page of numbers about how you play, are not things to publish by accident.
 
 An engine is yours to supply. Install Stockfish from your package manager, put it on `PATH`, or point `STOCKFISH_PATH` at it, and ChessAnalyzer can also download one for you from its Engines tab. A LaTeX install unlocks the typeset chess-book export, and each app's startup banner reports whether it found them.

@@ -357,23 +357,46 @@ html[data-theme="dark"] {
   min-width: 0;
 }
 
+/* Both search fields on the site share one palette: the projects filter box
+   below, and the publications bibsearch box, which al_folio_core styles from the
+   --global-newsletter-* tokens. Those are deliberately light in both themes (the
+   newsletter block is an inverted card), so the bibsearch box used to sit on the
+   dark page as a pale rectangle. Pointing both at the card surface makes them
+   track the theme the way every other panel does.
+
+   --field-border-color is a shade stronger than --global-divider-color: the
+   divider is tuned for hairlines between cards and is too faint to read as the
+   edge of an input in light mode. */
+:root {
+  --field-border-color: rgba(0, 0, 0, 0.22);
+}
+html[data-theme="dark"] {
+  --field-border-color: #4a4a50;
+}
+
+.pf-input,
+.bibsearch-form-input {
+  color: var(--global-text-color);
+  background-color: var(--global-card-bg-color);
+  border: 1px solid var(--field-border-color);
+  border-radius: 6px;
+  box-shadow: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
 .pf-input {
   width: 100%;
   padding: 0.3rem 1.7rem 0.3rem 0.6rem;
   font-size: 0.8rem;
   line-height: 1.4;
-  color: var(--global-text-color);
-  background-color: var(--global-card-bg-color);
-  border: 1px solid var(--global-divider-color);
-  border-radius: 6px;
-  transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease;
 }
-.pf-input::placeholder {
+.pf-input::placeholder,
+.bibsearch-form-input::placeholder {
   color: var(--global-text-color-light);
 }
-.pf-input:focus {
+.pf-input:focus,
+.bibsearch-form-input:focus {
   outline: none;
   border-color: var(--global-theme-color);
   box-shadow: 0 0 0 2px rgba(128, 128, 128, 0.16);
@@ -418,7 +441,7 @@ html[data-theme="dark"] {
   white-space: nowrap;
   color: var(--global-text-color);
   background-color: var(--global-card-bg-color);
-  border: 1px solid var(--global-divider-color);
+  border: 1px solid var(--field-border-color);
   border-radius: 6px;
   cursor: pointer;
 }
