@@ -61,7 +61,12 @@ if (/gem 'al_math',\s*:git =>/.test(gemfile)) {
   failures.push("`Gemfile` must not use git-branch pin for `al_math`; use released gem version.");
 }
 
-for (const forbiddenPath of ["_includes", "_layouts", "_sass", "_scripts", "assets/tailwind", "tailwind.config.js", "assets/webfonts"]) {
+// `_includes` is deliberately absent from this list. This repo is a personal site, not the
+// upstream starter, and the CV page's download control has to live in the header that
+// al_folio_cv renders, which exposes no config hook. The single override is
+// `_includes/cv/render.liquid`; keeping the standard directory name is what lets
+// `al-folio upgrade overrides audit` track it and warn when the gem's template moves.
+for (const forbiddenPath of ["_layouts", "_sass", "_scripts", "assets/tailwind", "tailwind.config.js", "assets/webfonts"]) {
   if (exists(forbiddenPath)) {
     failures.push(`Starter must not own core component path \`${forbiddenPath}\`; move ownership to the corresponding gem.`);
   }

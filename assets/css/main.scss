@@ -610,3 +610,225 @@ html[data-theme="dark"] .projects.pf-clickable .card .proj-tag:hover {
   outline: 2px solid var(--global-theme-color);
   outline-offset: 1px;
 }
+
+/* ======================================================================
+   CV downloads
+   ----------------------------------------------------------------------
+   The download control in the CV page header. Markup lives in the one local
+   override, _includes/cv/render.liquid; the shape is chosen by `cv_downloads.style`
+   in _pages/cv.md; the click behaviour is assets/js/cv-downloads.js.
+
+   Only the block matching the configured style ever renders, so the rest of
+   these rules are inert rather than conflicting. Nothing here applies to
+   `style: single`, which reuses the gem's own floated icon untouched.
+   ====================================================================== */
+
+.cv-dl {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+  margin-left: 1rem;
+  /* No font-size here on purpose. The gem's original icon is a bare <a> inside
+     .post-title, so it renders at the heading's own size; inheriting keeps this
+     control identical to the icon it replaces. Everything below that must NOT
+     scale with the heading (menu text, captions) sets its own size, in em where
+     it should track the glyph and in rem where it should not. */
+  font-weight: 400;
+  line-height: 1;
+  color: var(--global-theme-color);
+}
+
+.cv-dl a {
+  color: inherit;
+}
+
+/* Links site-wide underline on hover; that reads as a defect on an icon. */
+.cv-dl a:hover {
+  text-decoration: none;
+  opacity: 0.72;
+}
+
+/* --- style: icons ----------------------------------------------------- */
+
+.cv-dl--icons a {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+/* fa-file-pdf is wider than fa-file-lines, so give both the same track and the
+   pair reads as deliberate rather than as two loose glyphs. */
+.cv-dl--icons i {
+  width: 1.15em;
+  text-align: center;
+}
+
+/* em, so the caption stays proportional to whatever size the heading gives the glyph */
+.cv-dl-cap {
+  font-size: 0.3em;
+  font-weight: 400;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.cv-dl--cap-muted .cv-dl-cap {
+  color: var(--global-text-color-light);
+}
+
+.cv-dl--cap-caps .cv-dl-cap {
+  color: inherit;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.cv-dl--cap-boxed {
+  gap: 0;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.cv-dl--cap-boxed a {
+  padding: 0.4rem 0.6rem 0.35rem;
+}
+
+.cv-dl--cap-boxed a + a {
+  border-left: 1px solid var(--global-divider-color);
+}
+
+.cv-dl--cap-boxed a:hover {
+  opacity: 1;
+  background-color: var(--global-divider-color);
+}
+
+.cv-dl--cap-boxed .cv-dl-cap {
+  color: var(--global-text-color-light);
+}
+
+/* --- styles: menu, menu-caret, split, split-divided ------------------- */
+
+.cv-dl--menu,
+.cv-dl--split {
+  position: relative;
+  align-items: center;
+  gap: 0;
+}
+
+.cv-dl-trigger,
+.cv-dl-caret-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* Padding, not size: the caret stays visually tiny while the tappable box
+   around it gets closer to a usable target. */
+.cv-dl-caret-btn {
+  padding: 0.5rem 0.32rem;
+}
+
+.cv-dl-trigger:hover,
+.cv-dl-trigger[aria-expanded="true"],
+.cv-dl-caret-btn:hover,
+.cv-dl-caret-btn[aria-expanded="true"] {
+  opacity: 0.72;
+}
+
+.cv-dl-main {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.1rem;
+}
+
+/* stretch, so the hairline spans the glyph's full height instead of just the caret's */
+.cv-dl--divided .cv-dl-caret-btn {
+  align-self: stretch;
+  margin-left: 0.28rem;
+  padding-left: 0.42rem;
+  border-left: 1px solid var(--global-divider-color);
+}
+
+/* em again: a caret sized in px looks correct beside a small glyph and vanishes
+   beside a large one, and this glyph is as large as the page heading. */
+.cv-dl-caret {
+  width: 0;
+  height: 0;
+  border-left: 0.13em solid transparent;
+  border-right: 0.13em solid transparent;
+  border-top: 0.15em solid currentColor;
+}
+
+/* rem, not em: the panel is its own surface and must not scale with the heading */
+.cv-dl-menu {
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  right: 0;
+  z-index: 20;
+  min-width: 11rem;
+  font-size: 0.8rem;
+  line-height: normal;
+  padding: 0.25rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 6px;
+  background-color: var(--global-card-bg-color);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  text-align: left;
+}
+
+.cv-dl-menu[hidden] {
+  display: none;
+}
+
+.cv-dl-menu a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: 4px;
+  color: var(--global-text-color);
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.cv-dl-menu a:hover {
+  opacity: 1;
+  background-color: var(--global-divider-color);
+  color: var(--global-theme-color);
+}
+
+.cv-dl-menu i {
+  width: 1.05em;
+  font-size: 0.9rem;
+  text-align: center;
+  color: var(--global-theme-color);
+}
+
+/* rows: notes */
+.cv-dl-meta {
+  display: block;
+  font-size: 0.67rem;
+  color: var(--global-text-color-light);
+}
+
+/* rows: sizes. The label takes the slack so the size lands on the right edge,
+   which `justify-content` cannot do here because the row has three children. */
+.cv-dl-row--split .cv-dl-name {
+  margin-right: auto;
+  padding-right: 1.25rem;
+}
+
+.cv-dl-size {
+  font-size: 0.68rem;
+  color: var(--global-text-color-light);
+}

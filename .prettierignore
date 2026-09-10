@@ -2,6 +2,10 @@
 **/*.min.css
 **/*.min.js
 assets/css/main.scss
+# Local override of al_folio_cv's CV template. Kept byte-identical to the gem apart
+# from the header block, so `al-folio upgrade overrides diff` stays a small readable
+# diff. Letting prettier reformat all 389 lines would bury that difference.
+_includes/cv/render.liquid
 assets/js/distillpub/template.v2.js
 assets/js/search/*.js
 assets/plotly/demo.html
