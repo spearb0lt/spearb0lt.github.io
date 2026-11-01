@@ -4,8 +4,8 @@ title: LitigatAI
 description: An AI workbench for Indian litigation practice - ten tools covering a matter from the first brief to the final filing.
 img: assets/img/project/litigation-ai.jpg
 importance: 1
-category: agentic-ai/llm
-tags: [llms, legal-tech, agents, document-generation, fastapi, hackathon, live-demo]
+category: llm-apps
+tags: [llms, legal-tech, document-generation, fastapi, hackathon, live-demo]
 ---
 
 {% assign pt = site.data.project_tags %}{% assign all_families = 'domain,method,stack,meta' | split: ',' %}{% assign fams = pt.families_on.project_pages | default: all_families %}{% if pt.enabled and pt.show_on.project_pages and page.tags %}<div class="proj-tags proj-tags-page pt-style-{{ pt.style.project_pages | default: 'soft' }}">{% for t in page.tags %}{% assign fam = pt.map[t] | default: pt.default_family %}{% if fams contains fam %}<span class="proj-tag pt-{{ fam }} pt-tag-{{ t | slugify }}">{{ t }}</span>{% endif %}{% endfor %}</div>{% endif %}

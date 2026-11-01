@@ -4,7 +4,7 @@ title: CodeGen - Autonomous Competitive Programming Solver
 description: An end-to-end AI solver built for the Meta Hacker Cup 2025 AI Track.
 img: assets/img/project/codegen-mhc2025.jpg
 importance: 2
-category: agentic-ai/llm
+category: agents/agentic-ai
 tags: [llms, agents, competitive-programming, multimodal, fastapi, gemini, global-rank-10]
 ---
 

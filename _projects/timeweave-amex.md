@@ -4,8 +4,8 @@ title: TimeWeave - Counterfactual Journey Engine
 description: Cross-channel journey stitching for American Express - one identity, one timeline, and alternate futures ranked by observed outcome.
 img: assets/img/project/timeweave-amex.jpg
 importance: 2
-category: data-analytics
-tags: [analytics, identity-resolution, churn-prediction, causal-inference, duckdb, fastapi, react, hackathon]
+category: time-series
+tags: [analytics, identity-resolution, churn-prediction, duckdb, fastapi, react, hackathon]
 ---
 
 {% assign pt = site.data.project_tags %}{% assign all_families = 'domain,method,stack,meta' | split: ',' %}{% assign fams = pt.families_on.project_pages | default: all_families %}{% if pt.enabled and pt.show_on.project_pages and page.tags %}<div class="proj-tags proj-tags-page pt-style-{{ pt.style.project_pages | default: 'soft' }}">{% for t in page.tags %}{% assign fam = pt.map[t] | default: pt.default_family %}{% if fams contains fam %}<span class="proj-tag pt-{{ fam }} pt-tag-{{ t | slugify }}">{{ t }}</span>{% endif %}{% endfor %}</div>{% endif %}

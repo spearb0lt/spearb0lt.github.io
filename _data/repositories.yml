@@ -12,7 +12,6 @@ github_repos:
   - spearb0lt/Complete-RAG-Evaluation-Tools-Metrics-Methods-Framework-Benchmarks
   - spearb0lt/Olist-Marketplace-Analytics
   - spearb0lt/CP-SAT-Based-Timetabling-and-Exam-Arrangement
-  - spearb0lt/demo-timeweave
   - spearb0lt/Text-to-Handwriting-converter
   - spearb0lt/Consumer-Commission-Complaint-Agent
   - spearb0lt/LitigatAI
@@ -34,6 +33,31 @@ github_repos:
 # _data/project_tags.yml (tag -> family) and assets/css/main.scss (family -> colour),
 # which is the same vocabulary the project cards use.
 repo_cards:
+  - name: Indian-Matchbox-Art-Style-Text-to-Image-Generator
+    url: https://github.com/spearb0lt/Indian-Matchbox-Art-Style-Text-to-Image-Generator
+    lang: Jupyter Notebook
+    desc: Two LoRA fine-tunes that generate vintage Indian matchbox labels from a prompt, trained on the same 197 labels with SDXL and SD3.5-medium flow matching.
+    tags: [finetuning, lora, diffusion, flow-matching, text-to-image, open-weights]
+  - name: Research-Paper-Dissector
+    url: https://github.com/spearb0lt/Research-Paper-Dissector
+    lang: Python
+    desc: Upload a research paper and interrogate every figure, table, equation and claim in it, with citations that point at a bounding box on a page. Works with no API key.
+    tags: [nlp, document-ai, rag, hybrid-search, self-hosted, live-demo]
+  - name: Multi-Agent-Fact-Verifier
+    url: https://github.com/spearb0lt/Multi-Agent-Fact-Verifier
+    lang: Python
+    desc: A supervised team of nine LLM agents that researches the open web, verifies every claim against the sources it read, and writes a cited report. Pauses and resumes without losing work.
+    tags: [llms, agents, multi-agent, fact-checking, rag]
+  - name: Lingua-Translate
+    url: https://github.com/spearb0lt/Lingua-Translate
+    lang: Python
+    desc: On-device-first translator for 61 languages that reads romanized Indic text, runs IndicTrans2/NLLB locally, and falls back to free APIs, with speech in and out.
+    tags: [nlp, speech, machine-translation, transliteration, on-device, live-demo]
+  - name: Self-Hosted-News-Research-Agent
+    url: https://github.com/spearb0lt/Self-Hosted-News-Research-Agent
+    lang: Python
+    desc: A configurable news aggregator that ingests, deduplicates, clusters and digests a beat in ten resumable stages. Runs with no API keys.
+    tags: [nlp, web-scraping, deduplication, clustering, summarization, self-hosted]
   - name: Lichess-Essentials
     url: https://github.com/spearb0lt/Lichess-Essentials
     lang: Python
@@ -98,7 +122,7 @@ repo_cards:
     url: https://github.com/spearb0lt/LitigatAI
     lang: Python
     desc: An AI workbench for Indian litigation practice with ten tools from first brief to final filing, FastAPI, bring your own key across five providers.
-    tags: [llms, legal-tech, agents, fastapi, hackathon]
+    tags: [llms, legal-tech, fastapi, hackathon]
   - name: Consumer-Commission-Complaint-Agent
     url: https://github.com/spearb0lt/Consumer-Commission-Complaint-Agent
     lang: Python

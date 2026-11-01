@@ -3,8 +3,8 @@ layout: page
 title: Consumer Commission Complaint Agent
 description: A guided intake that turns a consumer's own account of what went wrong into a file-ready complaint petition, routed to the correct Commission.
 img: assets/img/project/consumer-commision.jpg
-importance: 3
-category: agentic-ai/llm
+importance: 2
+category: llm-apps
 tags: [llms, legal-tech, document-generation, fastapi, hackathon]
 ---
 

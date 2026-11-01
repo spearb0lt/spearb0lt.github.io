@@ -161,9 +161,11 @@ colors:
   # label itself on a soft one; dark values are bright enough for the inverse.
   cv: { light: "#0f766e", dark: "#2dd4bf" } # teal
   nlp: { light: "#b45309", dark: "#fbbf24" } # amber
-  audio: { light: "#78350f", dark: "#d6a06a" } # sepia
+  speech: { light: "#78350f", dark: "#d6a06a" } # sepia
   chess: { light: "#1f6f4a", dark: "#6ee7a5" } # forest
   llms: { light: "#7c3aed", dark: "#a78bfa" } # violet
+  agents: { light: "#a16207", dark: "#fde047" } # gold
+  finetuning: { light: "#1e40af", dark: "#93c5fd" } # navy
   biomedical: { light: "#be123c", dark: "#fb7185" } # rose
   medical-imaging: { light: "#9d174d", dark: "#f472b6" } # pink
   analytics: { light: "#0369a1", dark: "#38bdf8" } # blue
@@ -183,9 +185,11 @@ map:
   # --- domain -------------------------------------------------------------
   cv: domain
   nlp: domain
-  audio: domain
+  speech: domain
   chess: domain
   llms: domain
+  agents: domain
+  finetuning: domain
   biomedical: domain
   medical-imaging: domain
   timeseries: domain
@@ -201,7 +205,6 @@ map:
 
   # --- method -------------------------------------------------------------
   rag: method
-  agents: method
   multimodal: method
   hybrid-search: method
   bm25: method
@@ -222,7 +225,6 @@ map:
   deep-learning: method
   anti-spoofing: method
   sign-language: method
-  speech: method
   document-ai: method
   document-generation: method
   image-generation: method
@@ -232,6 +234,18 @@ map:
   on-device: method
   self-hosted: method
   tabular: method
+  multi-agent: method
+  fact-checking: method
+  web-scraping: method
+  clustering: method
+  deduplication: method
+  summarization: method
+  machine-translation: method
+  transliteration: method
+  lora: method
+  diffusion: method
+  flow-matching: method
+  text-to-image: method
 
   # --- stack --------------------------------------------------------------
   fastapi: stack
@@ -255,6 +269,11 @@ map:
   pillow: stack
   latex: stack
   chrome-extension: stack
+  nextjs: stack
+  onnx: stack
+  diffusers: stack
+  huggingface: stack
+  whisper: stack
 
   # --- meta ---------------------------------------------------------------
   published: meta
@@ -262,3 +281,4 @@ map:
   hackathon: meta
   reference: meta
   global-rank-10: meta
+  open-weights: meta

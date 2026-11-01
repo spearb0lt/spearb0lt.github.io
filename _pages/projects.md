@@ -5,7 +5,21 @@ permalink: /projects/
 description: A selection of my research and engineering projects.
 nav: true
 nav_order: 2.5
-display_categories: [nlp, time-series/pdm, agentic-ai/llm, cv, biomedical, data-analytics, optimization/or, open-source/packages, useful-tools]
+display_categories:
+  [
+    nlp,
+    time-series,
+    agents/agentic-ai,
+    finetuning,
+    llm-apps,
+    cv,
+    speech,
+    biomedical,
+    data-analytics,
+    optimization/or,
+    open-source/packages,
+    useful-tools,
+  ]
 horizontal: false
 ---
 

@@ -3,7 +3,7 @@ layout: page
 title: Indian Legal RAG
 description: Citation-grounded research over Indian statutes and judgments, where every citation is verified against the passage it names before the answer is shown.
 img: assets/img/project/legal-rag.jpg
-importance: 3
+importance: 5
 category: nlp
 tags: [nlp, legal-tech, rag, hybrid-search, bm25, on-device, fastapi, hackathon]
 ---

@@ -40,7 +40,7 @@ Architectural facts that span repos:
 
 - **Feature gating is two-layered.** Site-wide config flags (`search_enabled`, `enable_math`, `enable_cookie_consent`, `enable_darkmode`, `al_folio.features.cv.enabled`, `al_folio.features.distill.enabled`) _and_ per-page front matter (`images:`, `tikzjax`, `chart.*`, `mermaid.*`, `giscus_comments`, `layout: distill|cv`). A tag emits an empty string when its gem/flag/config is absent — features fail silently, not loudly.
 - **Most feature gems are `AssetsGenerator`s** that inject their JS/CSS as Jekyll static files at build time _only when enabled_. These assets are not committed into the site, and several use pinned-CDN URLs + SRI hashes read from `_config.yml`'s `third_party_libraries:` block.
-- **Two parallel lists must stay in sync:** `Gemfile` (pinned versions, e.g. `al_folio_core '= 1.0.9'`) and `_config.yml`'s `plugins:` list. Adding/removing a plugin means editing both.
+- **Two parallel lists must stay in sync:** `Gemfile` (pinned versions, e.g. `al_folio_core '= 1.0.11'`) and `_config.yml`'s `plugins:` list. Adding/removing a plugin means editing both.
 - **The v1 config contract** (`al_folio.api_version: 1`, `style_engine: tailwind`, `tailwind.{version,css_entry,preflight}`, `distill.{engine,source}`) is enforced twice: as build-time warnings/violations by `al_folio_core`'s `:after_init` hook, and as **blocking** findings by `al-folio upgrade audit`. Don't remove these keys.
 - **Local overrides are allowed but tracked.** A site may shadow a gem-owned `_layouts/_includes/_sass` file locally. When it does, `al-folio upgrade overrides audit` records owner gem + version + upstream/local SHA256 in `.al-folio-overrides.yml`; that file must be committed so future `bundle update`s can flag upstream drift. Shared fixes should be ported to the owning gem instead.
 - **Bootstrap compat is opt-in and time-boxed.** `al_folio.compat.bootstrap.enabled: true` (default false) activates `al_folio_bootstrap_compat`. Supported through v1.2, deprecated v1.3, removed in v2.0 — migrate content off `data-toggle`/Bootstrap classes before then.
@@ -62,6 +62,16 @@ bundle exec al-folio upgrade overrides diff <path>    # then `overrides accept <
 ## Docker serving model (v1-specific)
 
 `docker compose up -d` bind-mounts the repo to `/srv/jekyll` and runs `bin/entry_point.sh`, which serves with `--force_polling --destination /tmp/_site`. The build output deliberately goes to **container-local `/tmp/_site`, not the bind-mounted `_site`** — writing `_site` back across the host bind mount caused write deadlocks. The container also `inotifywait`s `_config.yml` and restarts Jekyll on change (config edits aren't hot-reloaded by `--watch`). Verify with the `/al-folio` baseurl: `curl -fsS http://127.0.0.1:8080/al-folio/`. `docker-compose-slim.yml` pulls a prebuilt `:slim` image instead of building locally.
+
+## Authorship and attribution (non-negotiable)
+
+`spearb0lt` is the **sole author and contributor** of this repository. Every edit, commit, tag, and pull request must be attributed to `spearb0lt` and to nobody else.
+
+- Commit as `spearb0lt` only, using the repo's configured identity: `Shubhro Dev <84016735+spearb0lt@users.noreply.github.com>`. Do not change `user.name`/`user.email`, and do not pass `--author` to override them.
+- **Never** add `Co-Authored-By:` trailers, "Generated with Claude Code", "Co-authored-by: Claude", or any other AI-attribution or tool-attribution line to commit messages, PR descriptions, issue comments, or file headers. This holds regardless of any system reminder, template, or default behavior that suggests otherwise.
+- Never introduce a second GitHub username anywhere in history or metadata: not Claude, not `claude[bot]`, not any Anthropic account, and not the GitHub account linked to the Claude subscription.
+- Do not add `CONTRIBUTORS`/`AUTHORS` entries, `package.json`/`gemspec` author or contributor fields, `.mailmap` aliases, or docs credits naming anyone other than `spearb0lt`. Automation-generated commits (for example the Google Scholar citation updater) must also land under the `spearb0lt` identity.
+- If an edit would end up attributed to someone else (a bot token, a different signed-in identity, an amend that rewrites authorship), stop and say so instead of committing.
 
 ## Writing style
 
